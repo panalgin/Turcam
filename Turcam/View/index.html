@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="css/main.css" media="all" type="text/css" />
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/rotation.js"></script>
+</head>
+<body>
+    <div class="top">
+        <div class="title"><img src="img/logo.png" title="Anasayfa" />Turcam - Version 0.0.4</div>
+        <ul class="menu">
+            <li>DOSYA</li>
+            <li>DÜZENLE</li>
+            <li>ARAÇLAR</li>
+            <li>AYARLAR</li>
+            <li>YARDIM</li>
+        </ul>
+        <div class="control">
+            <div class="minimize"></div>
+            <div class="maximize"></div>
+            <div class="close"></div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div.menu-btn").on("click", function (e) {
+                var bID = $(this).attr('id').replace('menu-', "");
+                $("div#pop-" + bID).slideToggle();
+            });
+
+            var timeout;
+
+            var min = +$("input#spindle-range").attr('min');
+            var max = +$("input#spindle-range").attr('max');
+            var step = +$("input#spindle-range").attr('step');
+
+            $("img#left-ear-r").on("mousedown", function (e) {
+                timeout = setInterval(function () {
+                    var value = +$("input#spindle-range").val();
+
+                    if (value - step >= min) {
+                        value = value - step;
+                        $("input#spindle-range").val(value).trigger("change");
+                    }
+                }, 50);
+
+                return false;
+            }).on("mouseup", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            }).on("mouseout", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            });
+
+            $("img#right-ear-r").on("mousedown", function (e) {
+                timeout = setInterval(function () {
+                    var value = +$("input#spindle-range").val();
+
+                    if (value + step <= max) {
+                        value = value + step;
+
+                        $("input#spindle-range").val(value).trigger("change");
+                    }
+                }, 50);
+
+                return false;
+            }).on("mouseup", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            }).on("mouseout", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            });
+
+            var minWidth = 0;
+            var maxWidth = +$("div#rpm-bar").width();
+
+            $("input#spindle-range").on("change", function (e) {
+                var value = +$(this).val();
+
+                var percent = value / (max - min); // div current rpm value to max/min rpm gap to find percentage
+                var targetWidth = parseInt((maxWidth - minWidth) * percent);
+
+                if (targetWidth > maxWidth)
+                    targetWidth = maxWidth;
+
+                targetWidth = maxWidth - targetWidth;
+
+                $("div#rpm-ovl").css("width", targetWidth);
+            });
+
+            $("input#spindle-range").trigger('change');
+
+            function getRotationDegrees(obj) {
+                var matrix = obj.css("transform");
+
+                if (matrix !== 'none') {
+                    var values = matrix.split('(')[1].split(')')[0].split(',');
+                    var a = values[0];
+                    var b = values[1];
+                    var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+                } else { var angle = 0; }
+                return angle; //(angle < 0); // ? angle + 360 : angle;
+            }
+
+            $("div.touch, div.inner-touch").on("mouseenter", function (e) {
+                var topVal = -135;
+                var rightVal = -45;
+                var bottomVal = 45;
+                var leftVal = 135;
+
+                var value = 0;
+                var old = getRotationDegrees($("div.hover-circle"));
+
+                if ($(this).hasClass("bottom-touch"))
+                    value = bottomVal;
+                else if ($(this).hasClass("right-touch") || $(this).hasClass("inner-right-touch"))
+                    value = rightVal;
+                else if ($(this).hasClass("left-touch") || $(this).hasClass("inner-left-touch"))
+                    value = leftVal;
+                else if ($(this).hasClass("top-touch"))
+                    value = topVal;
+
+
+                if (old - value == 270)
+                    value = old + 90;
+                else if (old - value == -270)
+                    value = old - 90;
+
+                if ($(this).hasClass("inner-right-touch") || $(this).hasClass("inner-left-touch"))
+                    $("div.hover-circle").addClass("hc-inner");
+                else
+                    $("div.hover-circle").removeClass("hc-inner");
+
+                $("div.hover-circle").animateRotate(old, value, 200, "linear", function () { });
+            });
+        });
+
+    </script>
+    <div class="left-bar">
+        <div id="menu-1" class="menu-btn">SPINDLE SETTINGS <img src="img/spindle.png" /></div>
+        <div id="pop-1" class="menu-pop">
+            <div class="header">SPINDLE SPEED</div>
+            <div class="bar-h">
+                RPM: <div id="rpm-bar" class="bar"></div><div id="rpm-ovl" class="bar-overlay"><img src="img/bar-tile.png" /><div class="remaining"></div></div>
+            </div>
+            <div class="bar-h">
+                FEED: <div class="bar"></div><div class="bar-overlay"></div>
+            </div>
+            <div class="bar-h">
+                SPEED: <div class="bar"></div><div class="bar-overlay"></div>
+            </div>
+            <div class="range-h"><img id="left-ear-r" src="img/left-ear-range.png" /><input id="spindle-range" min="100" max="12000" value="100" step="100" type="range" /><img id="right-ear-r" src="img/right-ear-range.png" /></div>
+        </div>
+        <div id="menu-2" class="menu-btn">MOTOR SETTINGS <img src="img/motor.png" /></div>
+        <div id="pop-2" class="menu-pop">
+            <div class="header">MOTOR COORDINATES</div>
+            <div class="row"><img src="img/motor-small.png" /><span>X:</span><div class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>Y:</span><div class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>Z:</span><div class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>A:</span><div class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>B:</span><div class="coordinate">0.0000</div></div>
+            <div class="row"><div class="ref-all-btn">REF ALL HOME</div></div>
+        </div>
+    </div>
+    <div class="main-bar">
+       
+    </div>
+    <div class="right-bar">
+        <div id="menu-3" class="menu-btn">TOUCH UI</div>
+        <div id="pop-3" class="menu-pop">
+            <div class="joystick-h">
+                <div class="touch-h">
+                    <div class="touch top-touch"><div class="arrow"></div></div>
+                    <div class="touch right-touch"><div class="arrow"></div></div>
+                    <div class="touch bottom-touch"><div class="arrow"></div></div>
+                    <div class="touch left-touch"><div class="arrow"></div></div>
+                    <div class="hover-circle"></div>
+                    <div class="base-circle">
+                        <div class="inner-touch inner-left-touch">
+                        </div>
+                        <div class="inner-touch inner-right-touch">
+
+                        </div>
+                        <div class="inner-base-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('div.minimize').click(function (e) {
+                windowsApp.minimizeWindowState();
+            });
+            $('div.maximize').click(function (e) {
+                windowsApp.toggleWindowState();
+            });
+
+            $('div.close').click(function (e) { 
+                windowsApp.exit();
+            });
+
+        });
+
+    </script>
+</body>
+</html>
