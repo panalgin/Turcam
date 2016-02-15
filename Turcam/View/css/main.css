@@ -288,5 +288,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     cursor: default;
 }
 
+.inner-right-touch:active {
+    background: linear-gradient(45deg, rgba(255,64,13,1) 0%, rgba(255,64,13,1) 56%, rgba(148,3,41,1) 70%, rgba(255,18,26,1) 100%);
+}
+
+.inner-left-touch:active {
+    background: linear-gradient(225deg, rgba(255,64,13,1) 0%, rgba(255,64,13,1) 56%, rgba(148,3,41,1) 70%, rgba(255,18,26,1) 100%);
+}
+
 
 
