@@ -205,14 +205,18 @@
             $('div.minimize').click(function (e) {
                 windowsApp.minimizeWindowState();
             });
+
             $('div.maximize').click(function (e) {
-                windowsApp.toggleWindowState();
+                var result = windowsApp.toggleWindowState();
+                if (result == true)
+                    $(this).addClass("restore");
+                else
+                    $(this).removeClass("restore");
             });
 
-            $('div.close').click(function (e) { 
+            $('div.close').click(function (e) {
                 windowsApp.exit();
             });
-
         });
 
     </script>

@@ -23,15 +23,24 @@ namespace Turcam
             }));
         }
 
-        public void ToggleWindowState()
+        public bool ToggleWindowState()
         {
+            bool isMaximized = false;
             Application.Current.Dispatcher.Invoke(new Action(() => {
                 if (Application.Current.MainWindow.WindowState == WindowState.Normal)
+                {
                     Application.Current.MainWindow.WindowState = WindowState.Maximized;
+                    isMaximized = true;
+                }
                 else if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
+                {
                     Application.Current.MainWindow.WindowState = WindowState.Normal;
+                    isMaximized = false;
+                }
 
             }), DispatcherPriority.ContextIdle);
+
+            return isMaximized;
         }
 
         public void MinimizeWindowState()

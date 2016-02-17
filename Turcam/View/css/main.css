@@ -26,6 +26,9 @@ img { padding: 0px; margin: 0px; border: none; }
 .top .control .maximize { background-image: url('../img/maximize.png'); }
 .top .control .maximize:hover { background-image: url('../img/maximize-hover.png'); }
 
+.top .control .restore { background-image: url('../img/restore.png'); }
+.top .control .restore:hover { background-image: url('../img/restore-hover.png'); }
+
 .top .control .minimize { background-image: url('../img/minimize.png'); }
 .top .control .minimize:hover { background-image: url('../img/minimize-hover.png'); }
 
