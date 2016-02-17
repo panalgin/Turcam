@@ -164,6 +164,9 @@
     <Content Include="View\img\spindle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\img\touch.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

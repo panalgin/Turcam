@@ -152,11 +152,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .menu-pop .row .ref-all-btn:hover { background-color: #71e0fb; }
 .menu-pop .row .ref-all-btn:active { background-color: #0088aa; }
 
-.joystick-h { min-height: 200px; }
+.joystick-h { min-height: 200px; position: relative; }
 
 .touch-h { transform: rotate(45deg); position: relative; width: 152px; height: 152px; overflow: hidden; clear: both; left: 28px; top: 20px; }
-
-
 
 .hover-circle { 
     width: 108px; height:108px; border-radius: 50%; position: absolute; top: 20px; left: 20px; 
