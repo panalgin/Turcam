@@ -12,9 +12,9 @@
     <div class="top">
         <div class="title"><img src="img/logo.png" title="Anasayfa" />Turcam - Version 0.0.4</div>
         <ul class="menu">
-            <li>DOSYA</li>
-            <li>DÜZENLE</li>
-            <li>ARAÇLAR</li>
+            <li id="file-member" class="sys-menu-member">DOSYA</li>
+            <li id="edit-member" class="sys-menu-member">DÜZENLE</li>
+            <li id="tools-member" class="sys-menu-member">ARAÇLAR</li>
             <li>AYARLAR</li>
             <li>YARDIM</li>
         </ul>
@@ -217,8 +217,47 @@
             $('div.close').click(function (e) {
                 windowsApp.exit();
             });
+
+            $(".sys-menu-member").on("click", function (e) {
+
+                var id = $(this).attr("id").replace("-member", "");
+
+                var x = +$(this).offset().left;
+                var y = +$(this).offset().top + parseInt($(this).css("height"));
+
+                var selector = "ul#" + id + "-pop";
+
+                $("ul.sys-menu-pop").each(function () {
+                    if ($(this).attr("id") != selector.replace("ul#", ""))
+                        $(this).hide();
+                });
+
+                $(selector).css("left", x).css("top", y).toggle();
+            });
+
+            $(window).on("click", function (e) {
+                if (!e.target.matches(".sys-menu-member")) {
+                    $("ul.sys-menu-pop").hide();
+                }
+            });
         });
 
     </script>
+
+    <ul class="sys-menu-pop" id="file-pop">
+        <li>Add</li>
+        <li>Open</li>
+        <li>Exit</li>
+    </ul>
+    <ul class="sys-menu-pop" id="edit-pop">
+        <li>Add</li>
+        <li>Open</li>
+        <li>Exit</li>
+    </ul>
+    <ul class="sys-menu-pop" id="tools-pop">
+        <li>Add</li>
+        <li>Open</li>
+        <li>Exit</li>
+    </ul>
 </body>
 </html>

@@ -297,5 +297,24 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background: linear-gradient(225deg, rgba(255,64,13,1) 0%, rgba(255,64,13,1) 56%, rgba(148,3,41,1) 70%, rgba(255,18,26,1) 100%);
 }
 
+.sys-menu-pop {
+    background-color: red;
+    border: 1px solid #000;
+    color: #fff;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    list-style-type: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: none;
+}
 
-
+.sys-menu-pop li {
+    line-height: 20px;
+    height: 20px;
+    min-width: 200px;
+    clear: both;
+    float: left;
+}
