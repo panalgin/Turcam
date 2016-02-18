@@ -223,7 +223,7 @@
                 var id = $(this).attr("id").replace("-member", "");
 
                 var x = +$(this).offset().left;
-                var y = +$(this).offset().top + parseInt($(this).css("height"));
+                var y = +$(this).offset().top + parseInt($(this).css("height")) - 1;
 
                 var selector = "ul#" + id + "-pop";
 
@@ -232,6 +232,7 @@
                         $(this).hide();
                 });
 
+                $(this).toggleClass("sys-mm-active");
                 $(selector).css("left", x).css("top", y).toggle();
             });
 

@@ -15,7 +15,7 @@ img { padding: 0px; margin: 0px; border: none; }
 .top .title { color: #929292; position: absolute; height: 31px; line-height: 31px; left: 5px; top: 0px; }
 .top .title img { width: 20px; height: 20px; vertical-align: top; margin: 6px 5px; }
 .top .menu { margin: 0px; padding: 0px; list-style: none; height: 20px; line-height: 20px; position: absolute; bottom: 10px; left: 5px; overflow: hidden; }
-.top .menu li { float: left; display: block; height: 20px; line-height: 20px; padding: 0px 10px; cursor: default;}
+.top .menu li { float: left; display: block; height: 20px; line-height: 20px; padding: 0px 10px; cursor: default; border: 1px solid transparent; }
 .top .menu li:hover { background-color: #343436; }
 .top .control { height: 18px; position: absolute; right: 0px; top: 0px; line-height: 20px; }
 .top .control div { width: 18px; height: 18px; float: left; }
@@ -297,10 +297,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background: linear-gradient(225deg, rgba(255,64,13,1) 0%, rgba(255,64,13,1) 56%, rgba(148,3,41,1) 70%, rgba(255,18,26,1) 100%);
 }
 
+.sys-menu-member {
+    z-index: 9999;
+}
+.sys-mm-active { background-color: #1b1b1c !important; border: 1px solid #333337; border-bottom: 1px solid #1b1b1c; }
+
 .sys-menu-pop {
-    background-color: red;
-    border: 1px solid #000;
-    color: #fff;
+    background-color: #1b1b1c; 
+    border: 1px solid #333337;
+    color: #f1f1f1;
     margin: 0px;
     padding: 0px;
     list-style: none;
@@ -308,6 +313,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 998;
     display: none;
 }
 
