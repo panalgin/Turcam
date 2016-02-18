@@ -219,6 +219,8 @@
             });
 
             $(".sys-menu-member").on("click", function (e) {
+                if (!$(this).hasClass("sys-mm-active"))
+                    $("li.sys-menu-member").removeClass("sys-mm-active");
 
                 var id = $(this).attr("id").replace("-member", "");
 
@@ -239,6 +241,7 @@
             $(window).on("click", function (e) {
                 if (!e.target.matches(".sys-menu-member")) {
                     $("ul.sys-menu-pop").hide();
+                    $("li.sys-menu-member").removeClass("sys-mm-active");
                 }
             });
         });
@@ -246,19 +249,19 @@
     </script>
 
     <ul class="sys-menu-pop" id="file-pop">
-        <li>Add</li>
+        <li><img src="img/close.png" /> Add</li>
         <li>Open</li>
-        <li>Exit</li>
+        <li><img src="img/close.png" /> Exit</li>
     </ul>
     <ul class="sys-menu-pop" id="edit-pop">
-        <li>Add</li>
+        <li><img src="img/close.png" /> Add</li>
         <li>Open</li>
-        <li>Exit</li>
+        <li><img src="img/close.png" /> Exit</li>
     </ul>
     <ul class="sys-menu-pop" id="tools-pop">
-        <li>Add</li>
+        <li><img src="img/close.png" /> Add</li>
         <li>Open</li>
-        <li>Exit</li>
+        <li><img src="img/close.png" /> Exit</li>
     </ul>
 </body>
 </html>
