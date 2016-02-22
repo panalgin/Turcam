@@ -6,7 +6,7 @@
     <title>Anasayfa</title>
     <link rel="stylesheet" href="css/main.css" media="all" type="text/css" />
     <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="js/rotation.js"></script>
+    <script type="text/javascript" src="js/sys-menu.js"></script>
 </head>
 <body>
     <div class="top">
@@ -173,7 +173,14 @@
         </div>
     </div>
     <div class="main-bar">
-       
+       <div class="tabs">
+           <div class="tab" id="connections-tab">Bağlantı <img src="img/close.png" /></div>
+       </div>
+       <div id="content" class="content">
+           <div class="tab-content">
+
+           </div>
+       </div>
     </div>
     <div class="right-bar">
         <div id="menu-3" class="menu-btn">TOUCH UI <img src="img/touch.png" /></div>
@@ -198,7 +205,6 @@
             </div>
         </div>
     </div>
-
 
     <script type="text/javascript">
 
@@ -275,7 +281,7 @@
     <ul class="sys-menu-pop" id="settings-pop">
         <li><img src="img/close.png" /> Add</li>
         <li>Open</li>
-        <li><img src="img/close.png" /> Exit</li>
+        <li id="connections-item">Bağlantı</li>
     </ul>
     <ul class="sys-menu-pop" id="help-pop">
         <li><img src="img/close.png" /> About Us </li>
@@ -285,7 +291,6 @@
         <li><img src="img/close.png" /> About Turcam Studio</li>
     </ul>
     <div class="status-bar">Ready</div>
-    <div class="footer-line"</div>
-
+    <div class="footer-line"></div>
 </body>
 </html>

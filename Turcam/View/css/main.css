@@ -359,3 +359,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     line-height: 23px;
     text-indent: 5px;
 }
+
+.tabs {
+    height: 18px;
+    min-width: 100px;
+    background-color: #0088aa;
+    
+}
