@@ -17,21 +17,21 @@ img { padding: 0px; margin: 0px; border: none; }
 .top .menu { margin: 0px; padding: 0px; list-style: none; height: 20px; line-height: 20px; position: absolute; bottom: 10px; left: 5px; overflow: hidden; }
 .top .menu li { float: left; display: block; height: 20px; line-height: 20px; padding: 0px 10px; cursor: default; border: 1px solid transparent; }
 .top .menu li:hover { background-color: #343436; }
-.top .control { height: 20px; position: absolute; right: 0px; top: 0px; line-height: 20px; }
-.top .control div { width: 18px; height: 20px; float: left; }
-.top .control li {margin: 0px; list-style:none;list-style-type:none; float:left;}
-.top .control li:hover {margin: 0px; list-style:none;list-style-type:none; float:left; background-color: #46464a }
 
-.top .control .close { margin: 3px 5px 0px 7px; background-image: url('../img/close.png'); }
+.top .control { height: 26px; position: absolute; right: 0px; top: 0px; line-height: 26px; }
+.top .control div { float: left; height: 26px; width: 34px; background-repeat: no-repeat; }
+.top .control div:hover { background-color: #46464a; }
+
+.top .control .close { background-image: url('../img/close.png'); background-position: 7px 3px; }
 .top .control .close:hover { background-image: url('../img/close-hover.png'); }
 
-.top .control .maximize { margin: 3px 5px 0px 7px; background-image: url('../img/maximize.png'); }
+.top .control .maximize { background-image: url('../img/maximize.png'); background-position: 7px 3px; }
 .top .control .maximize:hover { background-image: url('../img/maximize-hover.png'); }
 
-.top .control .restore { margin: 3px 5px 0px 7px; background-image: url('../img/restore.png'); }
+.top .control .restore { background-image: url('../img/restore.png'); background-position: 7px 3px; }
 .top .control .restore:hover { background-image: url('../img/restore-hover.png'); }
 
-.top .control .minimize { margin: 3px 5px 0px 7px; background-image: url('../img/minimize.png'); }
+.top .control .minimize { background-image: url('../img/minimize.png'); background-position: 7px 3px; }
 .top .control .minimize:hover { background-image: url('../img/minimize-hover.png'); }
 
 .spacer { height: 5px; width: 100%; background-color: #46464a; }
@@ -94,7 +94,6 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
-  animate: 0.2s;
   border-top: 2px solid #4a4a4c;
   border-bottom: 2px solid #2d2d30;
   margin-top: -7px;

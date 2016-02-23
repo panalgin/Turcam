@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Turcam"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="Turcam - 0.0.4" Height="867" Width="1211" WindowStyle="None" ResizeMode="NoResize" Background="#FF2D2D30" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged" Loaded="Window_Loaded" Icon="logo.ico">
+        Title="Turcam - 0.0.5" Height="867" Width="1211" WindowStyle="None" ResizeMode="NoResize" Background="#FF2D2D30" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged" Loaded="Window_Loaded" Icon="logo.ico">
     <Grid>
         <Border x:Name="BrowserHolder" BorderThickness="1">
             <Border.BorderBrush>
@@ -17,7 +17,7 @@
             </Border.BorderBrush>
             <cefSharp:ChromiumWebBrowser x:Name="Browser" MouseDown="Browser_MouseDown" Margin="0" />
         </Border>
-        <Rectangle x:Name="TitleArea" Height="30" Margin="5,5,80,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" MouseDown="TitleArea_MouseDown" Fill="#FFDC0000" Opacity="0" MouseLeftButtonDown="TitleArea_MouseLeftButtonDown"/>
+        <Rectangle x:Name="TitleArea" Height="30" Margin="5,5,102,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" MouseDown="TitleArea_MouseDown" Fill="#FFDC0000" MouseLeftButtonDown="TitleArea_MouseLeftButtonDown" Opacity="0"/>
         <Rectangle x:Name="GripBottomRight" HorizontalAlignment="Right" Height="10" Stroke="Black" VerticalAlignment="Bottom" Width="10" PreviewMouseLeftButtonDown="GripBottomRight_PreviewMouseLeftButtonDown" StrokeThickness="0" Cursor="SizeNWSE" Fill="#FFDC0000" Opacity="0"/>
         <Rectangle x:Name="GripBottomLeft" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Bottom" Width="10" PreviewMouseLeftButtonDown="GripBottomLeft_PreviewMouseLeftButtonDown" StrokeThickness="0" Cursor="SizeNESW" Fill="#FFDC0000" Opacity="0"/>
         <Rectangle x:Name="GripTopLeft" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" PreviewMouseLeftButtonDown="GripTopLeft_PreviewMouseLeftButtonDown" StrokeThickness="0" Cursor="SizeNWSE" Fill="#FFDC0000" Opacity="0"/>
