@@ -366,7 +366,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     line-height: 17px;
 }
 
-.tabs .tab {  height: 17px; color: #fff; position: relative; min-width: 100px; float: left; overflow: hidden; text-indent: 5px; }
+.tabs .tab {  height: 17px; color: #fff; position: relative; min-width: 100px; float: left; overflow: hidden; text-indent: 7px; }
 .tab img { margin: 0px; padding: 0px; vertical-align: top; position: absolute; top: 0px; right: 0px; display: none; }
 
 .tabs .tab:hover { background-color: #1c97ea; }
@@ -381,8 +381,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     position: absolute; top: 17px; right: 0px; left: 0px; bottom: 0px; 
     background-color: #1e1e1e; 
 }
-.main-bar .content .tab-content { outline: 0px; width: 100%; height: 100%; }
+.main-bar .content .tab-content { outline: 0px; width: 100%; height: 100%; position: relative; }
 .main-bar .active { border-top-color: #3f3f46; }
 .main-bar .active img { display: block; }
 .main-bar .active-focused { border-top-color: #007acc !important; }
 .main-bar .active-focused img { display: block; }
+
+.content-header {text-indent: 6px; position: absolute; width: 100%; height: 24px; line-height:24px; background-color: #2d2d30; float:left; top:0px;}
+.content-header img {position: absolute; left: 105px; top:4px; float:left;}

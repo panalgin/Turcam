@@ -146,6 +146,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\img\comport-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\js\tabbed-mdi.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
