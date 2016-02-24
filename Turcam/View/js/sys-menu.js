@@ -1,6 +1,5 @@
-﻿$(document).on("ready", function() {
+﻿$(document).on("ready", function () {
     $("li#connections-item").on("click", function (e) {
-        alert("Tıklandı");
-
+        getPage("connections");
     });
 });

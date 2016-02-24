@@ -149,6 +149,9 @@
     <Content Include="View\img\comport-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\inc\connections.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\js\tabbed-mdi.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
