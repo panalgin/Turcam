@@ -1,24 +1,23 @@
 ﻿// name should be connections-content alike
 function selectPage(name) {
     $("div.tab-content").hide();
+    $("div.tab").removeClass("active");
+    $("div#" + name).show();
 
     setTimeout(function () {
-        $("div#" + name).show().attr("tabindex", "-1").focus();
-    }, 20);
-
-    $("div.tab").removeClass("active");
+        $("div#" + name).attr("tabindex", "-1").focus();
+        $("div.tab").removeClass("active");
+    }, 1);
 }
 
 function removePage(id) {
     $("div#" + id).remove(); //delete content
 
     var tabid = id.replace("content", "tab");
-    
     var closest = $("div#" + tabid).prev();
 
     if (!(closest.length > 0))
         closest = $("div#" + tabid).next();
-    
 
     $("div#" + tabid).remove(); //delete tab
 
@@ -49,12 +48,13 @@ function getPage(name) {
 
 $(document).on("ready", function (e) {
     $("div.tabs").on("mousedown", "div.tab", function (e) {
-        $("div#content").off("focusout", "div.tab-content", OnFocusOutContent); // disable focusout
+        $("div.tab-content").off("focusout"); // disable focusout
 
         var id = $(this).attr("id").replace("tab", "content");
 
-        selectPage(id);        
+        selectPage(id);
 
+        $("div.tab").removeClass("active");
         e.preventDefault();
     });
 
@@ -69,11 +69,17 @@ $(document).on("ready", function (e) {
     });
 
     function OnFocusOutContent() {
+        $("div.tab").removeClass("active"); //remove all for the gods sake
+
         var id = $(this).attr("id").replace("content", "tab");
 
         $("div#" + id).removeClass("active-focused").addClass("active");
         var hold = $(this).parent();
-        $(hold).removeClass("active-focused").add("active");
+
+        if ($(this).is(":visible")) { // if content is visible set tab just active
+            
+            $(hold).removeClass("active-focused").add("active");
+        }
     }
 
     $("div.tabs").on("click", "img", function (e) {
