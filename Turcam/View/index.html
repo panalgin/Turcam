@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css" media="all" type="text/css" />
     <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="js/sys-menu.js"></script>
+    <script type="text/javascript" src="js/tabbed-mdi.js"></script>
 </head>
 <body>
     <div class="top">
@@ -175,11 +176,13 @@
     <div class="main-bar">
        <div class="tabs">
            <div class="tab" id="connections-tab">Bağlantı <img src="img/close.png" /></div>
+           <div class="tab" id="settings-tab">Ayarlar <img src="img/close.png" /></div>
        </div>
        <div id="content" class="content">
-           <div class="tab-content">
-
+           <div id="connections-content" class="tab-content" tabindex="1">
+               connetions
            </div>
+           <div id="settings-content" class="tab-content" tabindex="1">settings</div>
        </div>
     </div>
     <div class="right-bar">
@@ -209,6 +212,8 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            
+
             $('div.minimize').click(function (e) {
                 windowsApp.minimizeWindowState();
             });

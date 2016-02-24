@@ -146,6 +146,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\js\tabbed-mdi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="logo.ico" />
     <Content Include="View\css\main.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
