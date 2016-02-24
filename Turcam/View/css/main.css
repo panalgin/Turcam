@@ -34,22 +34,22 @@ img { padding: 0px; margin: 0px; border: none; }
 .top .control .minimize { background-image: url('../img/minimize.png'); background-position: 7px 3px; }
 .top .control .minimize:hover { background-image: url('../img/minimize-hover.png'); }
 
-.spacer { height: 5px; width: 100%; background-color: #46464a; }
+.spacer { height: 3px; width: 100%; background-color: #46464a; }
 
 .left-bar {
 	width: 225px;
 	background-color: #2d2d30;
 	position: absolute;
 	bottom: 0px;
-	top: 67px;
+	top: 65px;
 }
 .main-bar {
 	position: absolute;
 	left: 225px;
 	right: 225px;
-	top: 67px;
+	top: 69px;
 	bottom: 0px;
-	background-color: #1e1e1e;
+	background-color: #2d2d30;
 }
 .right-bar {
 	width: 225px;
@@ -57,7 +57,7 @@ img { padding: 0px; margin: 0px; border: none; }
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
-	top: 67px;
+	top: 65px;
 }
 
 .menu-btn { height: 48px; width: 217px; margin: 4px 4px 0px 4px; background-color: #39393d; position: relative; line-height: 48px; text-indent: 20px; font-weight: bold; cursor: default; }
@@ -346,10 +346,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .footer-line {
     position: absolute;
     width: 100%;
-    height: 5px;
+    height: 3px;
     bottom: 23px;
     background-color: #46464a;
-    text-indent: 5px;
 }
 .status-bar {
     position: absolute;
@@ -361,9 +360,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-indent: 5px;
 }
 
-.tabs {
-    height: 18px;
-    min-width: 100px;
-    background-color: #0088aa;
-    
+.main-bar .tabs {
+    height: 17px;
+    width: 100%;
+    line-height: 17px;
 }
+
+.tabs .tab { background-color: #007acc; height: 17px; color: #fff; position: relative; min-width: 100px; float: left; overflow: hidden; text-indent: 5px; }
+.tab img { margin: 0px; padding: 0px; vertical-align: top; position: absolute; top: 0px; right: 0px; }
+
+.main-bar .content { border: 1px solid #3f3f46; border-top: 2px solid #007acc; position: absolute; top: 17px; right: 0px; left: 0px; bottom: 0px; background-color: #1e1e1e; }
