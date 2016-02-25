@@ -437,9 +437,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     font-family: Tahoma;
     font-size: 11px;
     font-weight: normal;
-    background-color: #02c0ef;
+    background-color: #007acc;
     color: #fff;
-    border: 1px solid #0088aa;
+    border: 1px solid #1597ef;
 
     position: absolute;
     top: 30px;
@@ -449,14 +449,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     
 }
 
-.content input[type='button']:hover { background-color: #029dc4; }
-.content input[type='button']:active { background-color: #0088aa; }
+.content input[type='button']:hover { background-color: #1487d5; }
+.content input[type='button']:active { background-color: #164462; }
 .content span { position: absolute; top: 82px; left: 6px; }
 .content textarea { 
     position: absolute; top: 98px; left: 6px; 
     width: 300px;
     height: 200px;
-    resize: none;
     outline: none;
     background-color: #2d2d30;
     border: 1px solid #808080;
