@@ -403,7 +403,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     line-height: 16px;
     height: 20px;
     background-color: #2d2d30;
-    border: 1px solid #808080;
+    border: 1px solid #3f3f46;
     color: #fff;
     width: 150px;
     font-family: Tahoma;
@@ -458,8 +458,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     height: 200px;
     outline: none;
     background-color: #2d2d30;
-    border: 1px solid #808080;
+    border: 1px solid #3f3f46;
     color: #fff;
     font-family: Tahoma;
     font-size: 11px;
+    text-indent: 3px;
 }
