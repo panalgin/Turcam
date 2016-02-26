@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WinInterop = System.Windows.Interop;
 
 namespace Turcam
 {
@@ -22,12 +23,19 @@ namespace Turcam
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
             this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController());
             this.Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
+
+            this.SourceInitialized += MainWindow_SourceInitialized;
+        }
+
+        private void MainWindow_SourceInitialized(object sender, EventArgs e)
+        {
+            System.IntPtr handle = (new WinInterop.WindowInteropHelper(this)).Handle;
+            WinInterop.HwndSource.FromHwnd(handle).AddHook(new WinInterop.HwndSourceHook(Native.WindowProc));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -40,6 +48,7 @@ namespace Turcam
 
         private void Browser_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]

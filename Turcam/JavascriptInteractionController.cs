@@ -30,6 +30,7 @@ namespace Turcam
                 if (Application.Current.MainWindow.WindowState == WindowState.Normal)
                 {
                     Application.Current.MainWindow.WindowState = WindowState.Maximized;
+
                     isMaximized = true;
                 }
                 else if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
