@@ -7,7 +7,7 @@ function selectPage(name) {
     setTimeout(function () {
         $("div#" + name).attr("tabindex", "-1").focus();
         $("div.tab").removeClass("active");
-    }, 1);
+    }, 5);
 }
 
 function removePage(id) {
@@ -36,6 +36,7 @@ function getPage(name) {
     else {
         switch (name) {
             case "connections": $("div.tabs").append("<div class=\"tab\" id=\"" + name + "-tab\">Bağlantı <img src=\"img/close.png\" /></div>"); break;
+            case "start": $("div.tabs").append("<div class=\"tab\" id=\"" + name + "-tab\">Başlangıç <img src=\"img/close.png\" /></div>"); break;
         }
 
         $.get("inc/" + name + ".html", function (data) {

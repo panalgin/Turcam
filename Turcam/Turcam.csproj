@@ -158,6 +158,9 @@
     <Content Include="View\inc\connections.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\inc\start.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\js\tabbed-mdi.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

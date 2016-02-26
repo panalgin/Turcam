@@ -452,15 +452,20 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .content input[type='button']:hover { background-color: #1487d5; }
 .content input[type='button']:active { background-color: #164462; }
 .content span { position: absolute; top: 82px; left: 6px; }
+
 .content textarea { 
     position: absolute; top: 98px; left: 6px; 
-    width: 300px;
-    height: 200px;
+    width: 204px;
+    height: 150px;
+    max-height: 250px;
+    max-width: 400px;
     outline: none;
     background-color: #2d2d30;
     border: 1px solid #3f3f46;
     color: #fff;
     font-family: Tahoma;
     font-size: 11px;
-    text-indent: 3px;
+    padding: 3px;
 }
+
+#start-content .left { background-color: #28282b; width: 290px; height: 100%; position: absolute; top: 0px; left: 0px; }

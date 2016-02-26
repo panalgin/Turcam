@@ -144,6 +144,8 @@
 
                 $("div.hover-circle").animateRotate(old, value, 200, "linear", function () { });
             });
+
+            getPage("start");
         });
 
     </script>
@@ -175,11 +177,8 @@
     </div>
     <div class="main-bar">
        <div class="tabs">
-           <div class="tab" id="start-tab">Başlangıç <img src="img/close.png" /></div>
        </div>
        <div id="content" class="content">
-           <div id="start-content" class="tab-content" tabindex="1">
-           </div>
        </div>
     </div>
     <div class="right-bar">
@@ -265,7 +264,7 @@
         <li>Export Project</li>
         <li>Import Project</li>
         <li>Browse with..</li>
-        <li><img src="img/close.png" /> Exit</li>
+        <li id="exit-item"><img src="img/close.png" /> Exit</li>
     </ul>
     <ul class="sys-menu-pop" id="edit-pop">
         <li><img src="img/close.png" /> Add</li>
