@@ -469,3 +469,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 #start-content .left { background-color: #28282b; width: 290px; height: 100%; position: absolute; top: 0px; left: 0px; }
+#start-content .left img { margin: 10px 0px 0px 10px; }
+#start-content b { font-family: Tahoma; font-size: 12px; font-weight: bold; position: absolute; top: 100px; left: 20px; }
+#start-content ul { margin: 0px; padding: 0px; list-style: none; list-style-type: none; position: absolute; top: 130px; left: 20px; display: block; font-size: 12px; }
+#start-content ul .spacer { height: 20px; background-color: transparent; border: 0px; }
+#start-content ul a, #start-content ul a:visited { display: block; color: #0097fb; text-decoration: none; line-height: 20px; }
+#start-content ul a:hover { color: #88ccfe; }
