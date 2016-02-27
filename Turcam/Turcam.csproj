@@ -147,6 +147,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\img\announce-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\img\comport-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
