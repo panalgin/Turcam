@@ -29,7 +29,7 @@ namespace Turcam
             this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController());
             this.Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
 
-            this.SourceInitialized += MainWindow_SourceInitialized;
+            //this.SourceInitialized += MainWindow_SourceInitialized;
         }
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)
