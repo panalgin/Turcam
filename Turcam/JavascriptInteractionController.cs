@@ -55,9 +55,14 @@ namespace Turcam
 
         public void Connect(string port, int baud)
         {
-            
+            SerialConnection serialConnection = new SerialConnection(port, baud);
+            serialConnection.Open();
         }
 
+        /// <summary>
+        /// Gets serial communications port available at current computer
+        /// </summary>
+        /// <returns>Returns the serial communication port names</returns>
         public string[] GetPortNames()
         {
             return SerialPort.GetPortNames();
