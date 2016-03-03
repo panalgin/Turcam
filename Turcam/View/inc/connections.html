@@ -18,7 +18,7 @@
     </select>
     <input id="connect-button" type="button" value="Bağlan" />
     <span>Veri akışı:</span>
-    <textarea>Ex: 235:2656</textarea>
+    <textarea id="signal-area"></textarea>
 
     <script type="text/javascript">
         var ports = windowsApp.getPortNames();
@@ -32,8 +32,6 @@
         $("input#connect-button").on("click", function (e) {
             var port = $("select#port-select").val();
             var baud = +$("select#baud-select").val();
-
-            alert(port + ": " + baud);
 
             if (port != null && baud > 0) {
                 windowsApp.connect(port, baud);

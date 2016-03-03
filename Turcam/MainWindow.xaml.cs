@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WinInterop = System.Windows.Interop;
+using CefSharp;
 
 namespace Turcam
 {
@@ -42,8 +43,13 @@ namespace Turcam
         {
             string page = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "View\\index.html");
             this.Browser.Load(page);
+            this.Browser.BrowserSettings = new CefSharp.BrowserSettings
+            {
+                OffScreenTransparentBackground = false
+            };
 
             //this.Browser.Load("http://www.vsynctester.com/");
+            
         }
 
         private void Browser_MouseDown(object sender, MouseButtonEventArgs e)

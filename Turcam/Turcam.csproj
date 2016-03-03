@@ -134,6 +134,7 @@
     <Compile Include="SerialConnection.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="World.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -216,6 +217,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\inc\start.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\async\command-failed.js" />
+    <Content Include="View\js\async\command-sent.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\tabbed-mdi.js">
