@@ -20,12 +20,12 @@ namespace Turcam
 
         public override void Send(string command)
         {
-
+            base.Send(command);
         }
 
-        public override string Read()
+        public override void Read()
         {
-            return base.Read();
+            base.Read();
         }
     }
 }

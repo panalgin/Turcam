@@ -11,6 +11,6 @@ namespace Turcam
         SerialConnection SerialConnection { get; set; }
         string Name { get; set; }
         void Send(string command);
-        string Read();
+        void Read();
     }
 }
