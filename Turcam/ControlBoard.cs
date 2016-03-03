@@ -9,8 +9,10 @@ namespace Turcam
         public bool IsConnected { get { return this.SerialConnection != null ? this.SerialConnection.IsOpen : false; } }
 
 
-        public ControlBoard()
+        public ControlBoard(SerialConnection connection, string name = "Default")
         {
+            this.Name = name;
+            this.SerialConnection = connection;
             this.SerialConnection.DataReceived += SerialConnection_DataReceived;
             this.SerialConnection.ErrorReceived += SerialConnection_ErrorReceived;
             this.SerialConnection.PinChanged += SerialConnection_PinChanged;
@@ -25,7 +27,10 @@ namespace Turcam
                     try
                     {
                         if (!this.SerialConnection.IsOpen)
+                        {
                             this.SerialConnection.Open();
+                            this.Send(string.Format("Hello {0}", this.Name));
+                        }
                     }
                     catch(Exception ex)
                     {
@@ -58,10 +63,23 @@ namespace Turcam
 
         }
 
-
         public virtual void Send(string command)
         {
+            if (this.IsConnected)
+            {
+                try {
+                    this.SerialConnection.Write(command);
 
+                    CommandEventArgs args = new CommandEventArgs(this, command);
+                    EventSink.InvokeCommandSent(args);
+                }
+                catch(Exception ex)
+                {
+                    Logger.Enqueue(ex);
+                    CommandEventArgs args = new CommandEventArgs(this, command);
+                    EventSink.InvokeCommandFailed(args);
+                }
+            }
         }
 
         public virtual void Read()

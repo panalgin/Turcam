@@ -12,5 +12,6 @@ namespace Turcam
         string Name { get; set; }
         void Send(string command);
         void Read();
+        void Parse(string data);
     }
 }

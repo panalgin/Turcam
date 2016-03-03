@@ -56,7 +56,8 @@ namespace Turcam
         public void Connect(string port, int baud)
         {
             SerialConnection serialConnection = new SerialConnection(port, baud);
-            serialConnection.Open();
+            ControlBoard m_Control = new ControlBoard(serialConnection);
+            m_Control.Connect();
         }
 
         /// <summary>
