@@ -3,11 +3,23 @@ using System.Text;
 
 namespace Turcam
 {
-    public class ControlBoard : IControlBoard
+    public class ControlBoard : IControlBoard, IDisposable
     {
+        private bool isConnected = false;
+
         public SerialConnection SerialConnection { get; set; }
         public string Name { get; set; }
-        public bool IsConnected { get { return this.SerialConnection != null ? this.SerialConnection.IsOpen : false; } }
+        public bool IsConnected
+        {
+            get
+            {
+                if (isConnected == true && this.SerialConnection != null && this.SerialConnection.IsOpen)
+                    return true;
+                else
+                    return false;
+            }
+            private set { isConnected = value; }
+        }
 
 
         public ControlBoard(SerialConnection connection, string name = "Default")
@@ -63,7 +75,14 @@ namespace Turcam
             if (data.EndsWith(Environment.NewLine))
             {
                 data = data.Replace("\r\n", "");
+
                 EventSink.InvokeCommandReceived(new CommandEventArgs(this, data));
+
+                if (data == string.Format("Hello {0}", this.Name))
+                {
+                    this.IsConnected = true;
+                    EventSink.InvokeConnected(this);
+                }
             }
         }
 
@@ -95,6 +114,11 @@ namespace Turcam
             string data = Encoding.UTF8.GetString(buffer);
 
             Parse(data);
+        }
+
+        public void Dispose()
+        {
+            this.SerialConnection.Dispose();
         }
     }
 }

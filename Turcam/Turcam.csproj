@@ -112,6 +112,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandHandler.cs" />
     <Compile Include="DbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,6 +130,7 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="EventSink.cs" />
+    <Compile Include="JavascriptInjector.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="IControlBoard.cs" />
     <Compile Include="ControlBoard.cs" />
