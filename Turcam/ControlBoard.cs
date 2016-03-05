@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Turcam
 {
@@ -28,8 +29,10 @@ namespace Turcam
                     {
                         if (!this.SerialConnection.IsOpen)
                         {
+                            this.SerialConnection.NewLine = Environment.NewLine;
+                            this.SerialConnection.Encoding = Encoding.UTF8;
                             this.SerialConnection.Open();
-                            this.Send(string.Format("Hello {0}", this.Name));
+                            this.Send(string.Format("Hello {0};", this.Name));
                         }
                     }
                     catch(Exception ex)
@@ -52,15 +55,16 @@ namespace Turcam
 
         public virtual void SerialConnection_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            if (e.EventType == System.IO.Ports.SerialData.Eof)
-            {
-                Read();
-            }
+            Read();
         }
 
         public virtual void Parse(string data)
         {
-
+            if (data.EndsWith(Environment.NewLine))
+            {
+                data = data.Replace("\r\n", "");
+                EventSink.InvokeCommandReceived(new CommandEventArgs(this, data));
+            }
         }
 
         public virtual void Send(string command)
@@ -88,7 +92,7 @@ namespace Turcam
             byte[] buffer = new byte[length];
             this.SerialConnection.Read(buffer, 0, length);
 
-            string data = BitConverter.ToString(buffer);
+            string data = Encoding.UTF8.GetString(buffer);
 
             Parse(data);
         }

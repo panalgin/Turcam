@@ -63,6 +63,7 @@ namespace Turcam
                 ControlBoard m_Control = new ControlBoard(serialConnection);
                 EventSink.CommandSent += EventSink_CommandSent;
                 EventSink.CommandFailed += EventSink_CommandFailed;
+                EventSink.CommandReceived += EventSink_CommandReceived;
                 m_Control.Connect();
 
                 World.ControlBoard = m_Control;
@@ -76,6 +77,28 @@ namespace Turcam
                     //TODO add already connected feature
                 }
             }
+        }
+
+        private void EventSink_CommandReceived(CommandEventArgs args)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                MainWindow m_Window = Application.Current.MainWindow as MainWindow;
+                string m_Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "View\\js\\async\\command-received.js");
+                string m_Script = string.Empty;
+
+                if (File.Exists(m_Path))
+                {
+                    using (StreamReader reader = new StreamReader(m_Path))
+                    {
+                        m_Script = reader.ReadToEnd();
+                    }
+
+                    m_Window.Browser.ExecuteScriptAsync(string.Format(m_Script, args.Command));
+                }
+                else
+                    throw new FileNotFoundException(m_Path + " bulunamadı.");
+            }));
         }
 
         private void EventSink_CommandFailed(CommandEventArgs args)

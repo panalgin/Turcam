@@ -219,7 +219,12 @@
     <Content Include="View\inc\start.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\js\async\command-failed.js" />
+    <Content Include="View\js\async\command-failed.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\async\command-received.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\js\async\command-sent.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

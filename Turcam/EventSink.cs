@@ -10,9 +10,11 @@ namespace Turcam
     {
         public delegate void OnCommandSent(CommandEventArgs args);
         public delegate void OnCommandFailed(CommandEventArgs args);
+        public delegate void OnCommandReceived(CommandEventArgs args);
 
         public static event OnCommandSent CommandSent;
         public static event OnCommandFailed CommandFailed;
+        public static event OnCommandReceived CommandReceived;
 
         public static void InvokeCommandSent(CommandEventArgs args)
         {
@@ -24,6 +26,12 @@ namespace Turcam
         {
             if (CommandFailed != null)
                 CommandFailed(args);
+        }
+
+        public static void InvokeCommandReceived(CommandEventArgs args)
+        {
+            if (CommandReceived != null)
+                CommandReceived(args);
         }
     }
 
