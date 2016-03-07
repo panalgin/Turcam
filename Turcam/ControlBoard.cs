@@ -56,6 +56,19 @@ namespace Turcam
             }
         }
 
+        public virtual void Disconnect()
+        {
+            if (this.SerialConnection != null)
+            {
+                if (this.SerialConnection.IsOpen)
+                    this.SerialConnection.Close();
+            }
+
+            EventSink.InvokeDisconnected(this);
+
+            this.Dispose();
+        }
+
         public virtual void SerialConnection_PinChanged(object sender, System.IO.Ports.SerialPinChangedEventArgs e)
         {
 

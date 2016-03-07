@@ -12,11 +12,13 @@ namespace Turcam
         public delegate void OnCommandFailed(CommandEventArgs args);
         public delegate void OnCommandReceived(CommandEventArgs args);
         public delegate void OnConnected(ControlBoard board);
+        public delegate void OnDisconnected(ControlBoard board);
 
         public static event OnCommandSent CommandSent;
         public static event OnCommandFailed CommandFailed;
         public static event OnCommandReceived CommandReceived;
         public static event OnConnected Connected;
+        public static event OnDisconnected Disconnected;
 
         public static void InvokeCommandSent(CommandEventArgs args)
         {
@@ -40,6 +42,12 @@ namespace Turcam
         {
             if (Connected != null)
                 Connected(board);
+        }
+
+        public static void InvokeDisconnected(ControlBoard board)
+        {
+            if (Disconnected != null)
+                Disconnected(board);
         }
     }
 

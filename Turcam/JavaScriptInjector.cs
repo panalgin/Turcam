@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Turcam
@@ -16,7 +13,8 @@ namespace Turcam
             CommandSent,
             CommandFailed,
             CommandReceived,
-            Connected
+            Connected,
+            Disconnected
         }
 
         public static Dictionary<ScriptAction, string> ScriptPaths = new Dictionary<ScriptAction, string>() 
@@ -24,7 +22,8 @@ namespace Turcam
             { ScriptAction.CommandSent, "View\\js\\async\\command-sent.js" },
             { ScriptAction.CommandFailed, "View\\js\\async\\command-failed.js" },
             { ScriptAction.CommandReceived, "View\\js\\async\\command-received.js" },
-            { ScriptAction.Connected, "View\\js\\async\\connected.js" }
+            { ScriptAction.Connected, "View\\js\\async\\connected.js" },
+            { ScriptAction.Disconnected, "View\\js\\async\\disconnected.js" }
         };
 
         public static void Run(ScriptAction action, params string[] parameters)

@@ -19,6 +19,7 @@ namespace Turcam
             EventSink.CommandFailed += EventSink_CommandFailed;
             EventSink.CommandReceived += EventSink_CommandReceived;
             EventSink.Connected += EventSink_Connected;
+            EventSink.Disconnected += EventSink_Disconnected;
         }
 
         public void Exit()
@@ -79,9 +80,21 @@ namespace Turcam
             }
         }
 
+        public void Disconnect()
+        {
+            if (World.ControlBoard != null)
+                World.ControlBoard.Disconnect();
+        }
+
+
+        private void EventSink_Disconnected(ControlBoard board)
+        {
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.Disconnected, string.Empty);
+        }
+
         private void EventSink_Connected(ControlBoard board)
         {
-            
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.Connected, string.Empty);
         }
 
         private void EventSink_CommandReceived(CommandEventArgs args)
