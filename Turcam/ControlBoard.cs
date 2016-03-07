@@ -6,8 +6,19 @@ namespace Turcam
     public class ControlBoard : IControlBoard, IDisposable
     {
         private bool isConnected = false;
+        private SerialConnection serialConnection;
 
-        public SerialConnection SerialConnection { get; set; }
+        public SerialConnection SerialConnection {
+            get
+            {
+                return serialConnection;
+            }
+            set
+            {
+                serialConnection = value;
+                CheckHooks();
+            }
+        }
         public string Name { get; set; }
         public bool IsConnected
         {
@@ -26,9 +37,6 @@ namespace Turcam
         {
             this.Name = name;
             this.SerialConnection = connection;
-            this.SerialConnection.DataReceived += SerialConnection_DataReceived;
-            this.SerialConnection.ErrorReceived += SerialConnection_ErrorReceived;
-            this.SerialConnection.PinChanged += SerialConnection_PinChanged;
         }
 
         public virtual void Connect()
@@ -53,6 +61,22 @@ namespace Turcam
                         Logger.Enqueue(ex);
                     }
                 }
+            }
+        }
+
+        private void CheckHooks()
+        {
+            if (serialConnection == null)
+            {
+                serialConnection.DataReceived -= SerialConnection_DataReceived;
+                serialConnection.ErrorReceived -= SerialConnection_ErrorReceived;
+                serialConnection.PinChanged -= SerialConnection_PinChanged;
+            }
+            else
+            {
+                serialConnection.DataReceived += SerialConnection_DataReceived;
+                serialConnection.ErrorReceived += SerialConnection_ErrorReceived;
+                serialConnection.PinChanged += SerialConnection_PinChanged;
             }
         }
 

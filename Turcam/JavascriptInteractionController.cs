@@ -72,7 +72,13 @@ namespace Turcam
             else
             {
                 if (!World.ControlBoard.IsConnected)
+                {
+                    World.ControlBoard.SerialConnection.Dispose();
+
+                    SerialConnection serialConnection = new SerialConnection(port, baud);
+                    World.ControlBoard.SerialConnection = serialConnection;
                     World.ControlBoard.Connect();
+                }
                 else
                 {
                     //TODO add already connected feature

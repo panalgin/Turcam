@@ -207,6 +207,9 @@
     <Content Include="View\img\comport-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\img\connected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\img\logo-start.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

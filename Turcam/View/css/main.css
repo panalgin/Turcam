@@ -3,9 +3,7 @@
 }
 div { display: block; 
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+}
 
 img { padding: 0px; margin: 0px; border: none; }
 
@@ -60,6 +58,39 @@ img { padding: 0px; margin: 0px; border: none; }
 
 .top .control .minimize { background-image: url('../img/minimize.png'); background-position: 7px 3px; }
 .top .control .minimize:hover { background-image: url('../img/minimize-hover.png'); }
+
+.top .connection {
+    position: absolute;
+    right: 0px;
+
+    top: 30px;
+    width: 175px;
+    height: 20px;
+    line-height: 20px;
+    color: #929292;
+}
+
+.top .connection img { width: 16px; height: 16px; vertical-align: top; margin: 3px 5px 1px 0px; }
+.top .connection span { color: #0099ff; }
+.top .connection input[type='button'] {
+    height: 19px;
+    width: 45px;
+    font-family: Tahoma;
+    font-size: 10px;
+    background-color: #2d2d30;
+    border: 1px solid #3c3c41;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    line-height: 19px;
+    margin-top: 1px;
+    margin-left: 5px;
+    outline: none;
+}
+
+.top .connection input[type='button']:hover { background-color: #3f3f46; }
+.top .connection input[type='button']:active { background-color: rgba(34,34,34,1); }
 
 .spacer { height: 3px; width: 100%; background-color: #46464a; }
 

@@ -24,6 +24,9 @@
             <div class="maximize"></div>
             <div class="close"></div>
         </div>
+        <div class="connection">
+            <img src="img/connected.png" /> [COM40: <span>Bağlandı</span>] <input type="button" value="Çıkış" />
+        </div>
     </div>
     <div class="spacer"></div>
     <script type="text/javascript">
@@ -151,7 +154,7 @@
                 $("div.menu-btn").trigger("click");
                 $("div.tab-content").attr("tabindex", "-1").focus();
             }, 1000);
-            
+
 
         });
 
@@ -183,10 +186,10 @@
         </div>
     </div>
     <div class="main-bar">
-       <div class="tabs">
-       </div>
-       <div id="content" class="content">
-       </div>
+        <div class="tabs">
+        </div>
+        <div id="content" class="content">
+        </div>
     </div>
     <div class="right-bar">
         <div id="menu-3" class="menu-btn">TOUCH UI <img src="img/touch.png" /></div>
@@ -215,7 +218,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            
+
 
             $('div.minimize').click(function (e) {
                 windowsApp.minimizeWindowState();
