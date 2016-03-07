@@ -39,15 +39,16 @@ namespace Turcam
                 {
                     try
                     {
-                        if (!this.SerialConnection.IsOpen)
-                        {
-                            this.SerialConnection.NewLine = Environment.NewLine;
-                            this.SerialConnection.Encoding = Encoding.UTF8;
-                            this.SerialConnection.Open();
-                            this.Send(string.Format("Hello {0};", this.Name));
-                        }
+                        if (this.SerialConnection.IsOpen)
+                            this.SerialConnection.Close();
+
+                        this.SerialConnection.NewLine = Environment.NewLine;
+                        this.SerialConnection.Encoding = Encoding.UTF8;
+                        this.SerialConnection.Open();
+                        this.Send(string.Format("Hello {0};", this.Name));
+
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Logger.Enqueue(ex);
                     }
@@ -88,7 +89,7 @@ namespace Turcam
 
         public virtual void Send(string command)
         {
-            if (this.IsConnected)
+            if (this.SerialConnection != null && this.SerialConnection.IsOpen)
             {
                 try {
                     this.SerialConnection.Write(command);

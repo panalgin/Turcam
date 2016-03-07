@@ -19,7 +19,7 @@ namespace Turcam
             Connected
         }
 
-        public static Dictionary<ScriptAction, string, string> ScriptPaths = new Dictionary<ScriptAction, string>() 
+        public static Dictionary<ScriptAction, string> ScriptPaths = new Dictionary<ScriptAction, string>() 
         {
             { ScriptAction.CommandSent, "View\\js\\async\\command-sent.js" },
             { ScriptAction.CommandFailed, "View\\js\\async\\command-failed.js" },
@@ -27,7 +27,7 @@ namespace Turcam
             { ScriptAction.Connected, "View\\js\\async\\connected.js" }
         };
 
-        public static void Run(ScriptAction action)
+        public static void Run(ScriptAction action, params string[] parameters)
         {
             var item = ScriptPaths[action];
 
@@ -44,7 +44,7 @@ namespace Turcam
                         m_Script = reader.ReadToEnd();
                     }
 
-                    m_Window.Browser.ExecuteScriptAsync(string.Format(m_Script, args.Command));
+                    m_Window.Browser.ExecuteScriptAsync(string.Format(m_Script, parameters));
                 }
                 else
                 {

@@ -86,51 +86,17 @@ namespace Turcam
 
         private void EventSink_CommandReceived(CommandEventArgs args)
         {
-            Application.Current.Dispatcher.Invoke(new Action(() =>
-            {
-                MainWindow m_Window = Application.Current.MainWindow as MainWindow;
-                string m_Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "View\\js\\async\\command-received.js");
-                string m_Script = string.Empty;
-
-                if (File.Exists(m_Path))
-                {
-                    using (StreamReader reader = new StreamReader(m_Path))
-                    {
-                        m_Script = reader.ReadToEnd();
-                    }
-
-                    m_Window.Browser.ExecuteScriptAsync(string.Format(m_Script, args.Command));
-                }
-                else
-                    throw new FileNotFoundException(m_Path + " bulunamadı.");
-            }));
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.CommandReceived, args.Command);
         }
 
         private void EventSink_CommandFailed(CommandEventArgs args)
         {
-            Application.Current.Dispatcher.Invoke(new Action(() =>
-            {
-                MainWindow m_Window = Application.Current.MainWindow as MainWindow;
-                string m_Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "View\\js\\async\\command-failed.js");
-                string m_Script = string.Empty;
-
-                if (File.Exists(m_Path))
-                {
-                    using (StreamReader reader = new StreamReader(m_Path))
-                    {
-                        m_Script = reader.ReadToEnd();
-                    }
-
-                    m_Window.Browser.ExecuteScriptAsync(string.Format(m_Script, args.Command));
-                }
-                else
-                    throw new FileNotFoundException(m_Path + " bulunamadı.");
-            }));
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.CommandFailed, args.Command);
         }
 
         private void EventSink_CommandSent(CommandEventArgs args)
         {
-            JavascriptInjector.Run(JavascriptInjector.ScriptAction.CommandSent, args)
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.CommandSent, args.Command); // Sent: Hello Default;
         }
 
         /// <summary>
@@ -140,11 +106,6 @@ namespace Turcam
         public string[] GetPortNames()
         {
             return SerialPort.GetPortNames();
-        }
-
-        public void RunJavascript(ScriptAction action)
-        {
-
         }
     }
 }
