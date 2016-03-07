@@ -6,4 +6,5 @@ btn.removeClass("connect");
 btn.addClass("disconnect");
 btn.val("Çıkış");
 
-//view connect board at top right corner
+$("div.top div.connection").show();
+$("div.top div.connection span#port").text("{0}");

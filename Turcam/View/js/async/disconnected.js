@@ -5,3 +5,5 @@
 btn.removeClass("disconnect");
 btn.addClass("connect");
 btn.val("Bağlan");
+
+$("div.top div.connection").hide();

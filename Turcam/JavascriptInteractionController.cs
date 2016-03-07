@@ -100,7 +100,7 @@ namespace Turcam
 
         private void EventSink_Connected(ControlBoard board)
         {
-            JavascriptInjector.Run(JavascriptInjector.ScriptAction.Connected, string.Empty);
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.Connected, board.SerialConnection.PortName);
         }
 
         private void EventSink_CommandReceived(CommandEventArgs args)

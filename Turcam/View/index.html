@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="top">
-        <div class="title"><img src="img/logo.png" title="Anasayfa" />Turcam - Version 0.0.6</div>
+        <div class="title"><img src="img/logo.png" title="Anasayfa" />Turcam - Version 0.0.7</div>
         <ul class="menu">
             <li id="file-member" class="sys-menu-member">DOSYA</li>
             <li id="edit-member" class="sys-menu-member">DÜZENLE</li>
@@ -25,12 +25,16 @@
             <div class="close"></div>
         </div>
         <div class="connection">
-            <img src="img/connected.png" /> [COM40: <span>Bağlandı</span>] <input type="button" value="Çıkış" />
+            <img src="img/connected.png" /> [<span id="port">COM</span>: <span id="status">Bağlandı</span>] <input type="button" value="Çıkış" />
         </div>
     </div>
     <div class="spacer"></div>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("div.connection input[type='button']").on("click", function (e) {
+                windowsApp.disconnect();
+            });
+
             $("div.menu-btn").on("click", function (e) {
                 var bID = $(this).attr('id').replace('menu-', "");
                 $("div#pop-" + bID).slideToggle();
