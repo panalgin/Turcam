@@ -121,7 +121,7 @@ img { padding: 0px; margin: 0px; border: none; }
 
 .menu-btn { height: 48px; width: 217px; margin: 4px 4px 0px 4px; background-color: #39393d; position: relative; line-height: 48px; text-indent: 20px; font-weight: bold; cursor: default; }
 .menu-btn img { position: absolute; right: 0px; top: 0px; }
-.menu-btn:hover { background-color: #4d4d4f; }
+.menu-btn:hover { background-color: #404045; }
 
 .menu-pop { margin: 4px 4px 0px 4px; background-color: #39393d; padding: 4px; display: none; }
 .menu-pop .header { background-color: #434348; text-align: center; margin-bottom: 4px; line-height: 20px; height: 20px; overflow: hidden; font-weight: bold; }
