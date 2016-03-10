@@ -126,5 +126,17 @@ namespace Turcam
         {
             return SerialPort.GetPortNames();
         }
+
+        public void SendCommand(string parameter)
+        {
+            if (parameter == "Right")
+            {
+                World.ControlBoard.Send("Right;");
+            }
+            else if (parameter == "Left")
+            {
+                World.ControlBoard.Send("Left;");
+            }
+        }
     }
 }

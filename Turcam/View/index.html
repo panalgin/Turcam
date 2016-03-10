@@ -202,9 +202,9 @@
             <div class="joystick-h">
                 <div class="touch-h">
                     <div class="touch top-touch"><div class="arrow"></div></div>
-                    <div class="touch right-touch"><div class="arrow"></div></div>
+                    <div id="right-plazma-btn" class="touch right-touch"><div class="arrow"></div></div>
                     <div class="touch bottom-touch"><div class="arrow"></div></div>
-                    <div class="touch left-touch"><div class="arrow"></div></div>
+                    <div id="left-plazma-btn" class="touch left-touch"><div class="arrow"></div></div>
                     <div class="hover-circle"></div>
                     <div class="base-circle">
                         <div class="inner-touch inner-left-touch">
@@ -218,6 +218,22 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).on("ready", function (e) {
+            $("div#right-plazma-btn").on("click", function (e) {
+                windowsApp.sendCommand("Right");
+                e.preventDefault();
+            });
+
+            $("div#left-plazma-btn").on("click", function (e) {
+                windowsApp.sendCommand("Left");
+                e.preventDefault();
+            })
+
+        });
+
+    </script>
 
     <script type="text/javascript">
 
