@@ -13,12 +13,14 @@ namespace Turcam
         public delegate void OnCommandReceived(CommandEventArgs args);
         public delegate void OnConnected(ControlBoard board);
         public delegate void OnDisconnected(ControlBoard board);
+        public delegate void OnPositionChanged(string axis, ulong position);
 
         public static event OnCommandSent CommandSent;
         public static event OnCommandFailed CommandFailed;
         public static event OnCommandReceived CommandReceived;
         public static event OnConnected Connected;
         public static event OnDisconnected Disconnected;
+        public static event OnPositionChanged PositionChanged;
 
         public static void InvokeCommandSent(CommandEventArgs args)
         {
@@ -48,6 +50,12 @@ namespace Turcam
         {
             if (Disconnected != null)
                 Disconnected(board);
+        }
+
+        public static void InvokePositionChanged(string axis, ulong position)
+        {
+            if (PositionChanged != null)
+                PositionChanged(axis, position);
         }
     }
 

@@ -112,7 +112,7 @@ namespace Turcam
         {
             if (data.EndsWith(Environment.NewLine) || data.EndsWith("\0"))
             {
-                data = data.Replace("\r\n", "").Replace('\0', '.');
+                data = data.Replace("\r\n", "").Replace("\n", "").Replace("\0", "");
 
                 EventSink.InvokeCommandReceived(new CommandEventArgs(this, data));
 
@@ -120,6 +120,16 @@ namespace Turcam
                 {
                     this.IsConnected = true;
                     EventSink.InvokeConnected(this);
+                }
+                else if (data.StartsWith("A: "))
+                {
+                    data = data.Replace("A: ", "");
+
+                    ulong pos = 0;
+                    bool isNumber = ulong.TryParse(data, out pos);
+
+                    if (isNumber)
+                        EventSink.InvokePositionChanged("A", pos);
                 }
             }
         }

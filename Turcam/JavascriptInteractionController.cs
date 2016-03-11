@@ -20,6 +20,13 @@ namespace Turcam
             EventSink.CommandReceived += EventSink_CommandReceived;
             EventSink.Connected += EventSink_Connected;
             EventSink.Disconnected += EventSink_Disconnected;
+            EventSink.PositionChanged += EventSink_PositionChanged;
+
+        }
+
+        private void EventSink_PositionChanged(string axis, ulong position)
+        {
+            JavascriptInjector.Run(JavascriptInjector.ScriptAction.PositionChanged, axis, position.ToString());
         }
 
         public void Exit()

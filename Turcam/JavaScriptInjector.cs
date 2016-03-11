@@ -14,7 +14,8 @@ namespace Turcam
             CommandFailed,
             CommandReceived,
             Connected,
-            Disconnected
+            Disconnected,
+            PositionChanged
         }
 
         public static Dictionary<ScriptAction, string> ScriptPaths = new Dictionary<ScriptAction, string>() 
@@ -23,7 +24,8 @@ namespace Turcam
             { ScriptAction.CommandFailed, "View\\js\\async\\command-failed.js" },
             { ScriptAction.CommandReceived, "View\\js\\async\\command-received.js" },
             { ScriptAction.Connected, "View\\js\\async\\connected.js" },
-            { ScriptAction.Disconnected, "View\\js\\async\\disconnected.js" }
+            { ScriptAction.Disconnected, "View\\js\\async\\disconnected.js" },
+            { ScriptAction.PositionChanged, "View\\js\\async\\position-changed.js" }
         };
 
         public static void Run(ScriptAction action, params string[] parameters)
