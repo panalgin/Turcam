@@ -110,16 +110,26 @@ namespace Turcam
 
         public virtual void Parse(string data)
         {
-            if (data.EndsWith(Environment.NewLine))
+            if (data.EndsWith(Environment.NewLine) || data.EndsWith("\0"))
             {
-                data = data.Replace("\r\n", "");
+                data = data.Replace("\r\n", "").Replace("\n", "").Replace("\0", "");
 
                 EventSink.InvokeCommandReceived(new CommandEventArgs(this, data));
 
-                if (data == string.Format("Hello {0}", this.Name))
+                if (data.Contains(string.Format("Hello {0}", this.Name)))
                 {
                     this.IsConnected = true;
                     EventSink.InvokeConnected(this);
+                }
+                else if (data.StartsWith("A: "))
+                {
+                    data = data.Replace("A: ", "");
+
+                    ulong pos = 0;
+                    bool isNumber = ulong.TryParse(data, out pos);
+
+                    if (isNumber)
+                        EventSink.InvokePositionChanged("A", pos);
                 }
             }
         }
