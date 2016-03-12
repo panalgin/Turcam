@@ -138,6 +138,9 @@ namespace Turcam
         {
             if (parameter == "Right")
             {
+                Command command = new Command(CommandType.JogMove);
+
+                CommandHandler.Send(new Command() {  Type = CommandType.JogMove, Parameters = ""})
                 World.ControlBoard.Send("Right;");
             }
             else if (parameter == "Left")
