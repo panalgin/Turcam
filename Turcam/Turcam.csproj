@@ -115,7 +115,7 @@
     <Compile Include="Axis.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
-    <Compile Include="Commands\JogMoveCommand.cs" />
+    <Compile Include="Commands\JogCommand.cs" />
     <Compile Include="Motor.cs" />
     <Compile Include="DbModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -243,7 +243,7 @@
     <Content Include="View\js\async\disconnected.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\js\async\position-changed.js">
+    <Content Include="View\js\cached\position-changed.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\tabbed-mdi.js">

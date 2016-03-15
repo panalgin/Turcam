@@ -22,7 +22,6 @@ namespace Turcam
             EventSink.Connected += EventSink_Connected;
             EventSink.Disconnected += EventSink_Disconnected;
             EventSink.PositionChanged += EventSink_PositionChanged;
-
         }
 
         private void EventSink_PositionChanged(string axis, ulong position)
@@ -144,7 +143,7 @@ namespace Turcam
                         Motor motor = World.Motors.Where(q => q.Axis.Name == 'A').FirstOrDefault();
                         long pulses = 5000;
 
-                        JogMoveCommand command = new JogMoveCommand(motor, pulses);
+                        JogCommand command = new JogCommand(motor, pulses);
                         CommandHandler.Send(command);
 
                         break;
@@ -154,7 +153,7 @@ namespace Turcam
                         Motor motor = World.Motors.Where(q => q.Axis.Name == 'A').FirstOrDefault();
                         long pulses = -5000;
 
-                        JogMoveCommand command = new JogMoveCommand(motor, pulses);
+                        JogCommand command = new JogCommand(motor, pulses);
                         CommandHandler.Send(command);
 
                         break;
