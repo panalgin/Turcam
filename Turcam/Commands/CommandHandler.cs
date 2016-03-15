@@ -12,7 +12,7 @@ namespace Turcam.Commands
         {
             if (board.IsConnected)
             {
-                board.Send(command);
+                board.Send(command.ToString());
             }
         }
 

@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Threading;
 using CefSharp;
 using System.IO;
+using Turcam.Commands;
 
 namespace Turcam
 {
@@ -134,18 +135,30 @@ namespace Turcam
             return SerialPort.GetPortNames();
         }
 
-        public void SendCommand(string parameter)
+        public void Jog(string parameter)
         {
-            if (parameter == "Right")
+            switch(parameter)
             {
-                Command command = new Command(CommandType.JogMove);
+                case "A:Right":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'A').FirstOrDefault();
+                        long pulses = 5000;
 
-                CommandHandler.Send(new Command() {  Type = CommandType.JogMove, Parameters = ""})
-                World.ControlBoard.Send("Right;");
-            }
-            else if (parameter == "Left")
-            {
-                World.ControlBoard.Send("Left;");
+                        JogMoveCommand command = new JogMoveCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+                case "A:Left":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'A').FirstOrDefault();
+                        long pulses = -5000;
+
+                        JogMoveCommand command = new JogMoveCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
             }
         }
     }

@@ -14,5 +14,10 @@ namespace Turcam
         {
             this.Name = name;
         }
+
+        public override string ToString()
+        {
+            return this.Name.ToString();
+        }
     }
 }

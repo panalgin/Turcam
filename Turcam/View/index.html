@@ -234,12 +234,12 @@
     <script type="text/javascript">
         $(document).on("ready", function (e) {
             $("div#right-plazma-btn").on("click", function (e) {
-                windowsApp.sendCommand("Right");
+                windowsApp.jog("A:Right");
                 e.preventDefault();
             });
 
             $("div#left-plazma-btn").on("click", function (e) {
-                windowsApp.sendCommand("Left");
+                windowsApp.jog("A:Left");
                 e.preventDefault();
             })
 

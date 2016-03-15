@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Axis.cs" />
-    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Commands\JogMoveCommand.cs" />
     <Compile Include="Motor.cs" />

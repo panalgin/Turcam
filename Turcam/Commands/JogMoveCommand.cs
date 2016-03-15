@@ -10,9 +10,11 @@ namespace Turcam.Commands
     {
         public Motor AffectedMotor { get; set; }
 
-        public JogMoveCommand()
+        public JogMoveCommand(Motor affected, long pulses)
         {
+            this.Name = "Jog";
 
+            this.Parameters = string.Format("{0}:{1}", affected.Axis.ToString(), pulses.ToString());
         }
     }
 }
