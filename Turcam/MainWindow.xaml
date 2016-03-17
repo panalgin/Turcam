@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Turcam"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="Turcam - 0.0.7" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize" Background="#FF2D2D30" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged" Loaded="Window_Loaded" Icon="logo.ico">
+        Title="Turcam - 0.0.8" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize" Background="#FF2D2D30" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged" Loaded="Window_Loaded" Icon="logo.ico">
     <Grid>
         <Border x:Name="BrowserHolder" BorderThickness="1">
             <Border.BorderBrush>
