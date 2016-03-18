@@ -99,6 +99,7 @@ namespace Turcam
                 World.ControlBoard.Disconnect();
         }
 
+        #region EventHooks
 
         private void EventSink_Disconnected(ControlBoard board)
         {
@@ -125,6 +126,8 @@ namespace Turcam
             JavascriptInjector.Run(JavascriptInjector.ScriptAction.CommandSent, args.Command); // Sent: Hello Default;
         }
 
+        #endregion
+
         /// <summary>
         /// Gets serial communications port available at current computer
         /// </summary>
@@ -134,7 +137,7 @@ namespace Turcam
             return SerialPort.GetPortNames();
         }
 
-        public void Jog(string parameter)
+        public void JogStart(string parameter)
         {
             switch(parameter)
             {
@@ -143,7 +146,7 @@ namespace Turcam
                         Motor motor = World.Motors.Where(q => q.Axis.Name == 'A').FirstOrDefault();
                         long pulses = 5000;
 
-                        JogCommand command = new JogCommand(motor, pulses);
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
                         CommandHandler.Send(command);
 
                         break;
@@ -153,12 +156,105 @@ namespace Turcam
                         Motor motor = World.Motors.Where(q => q.Axis.Name == 'A').FirstOrDefault();
                         long pulses = -5000;
 
-                        JogCommand command = new JogCommand(motor, pulses);
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+                case "X:Right":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'X').FirstOrDefault();
+                        long pulses = 5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "X:Left":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'X').FirstOrDefault();
+                        long pulses = -5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "Y:Forward":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'Y').FirstOrDefault();
+                        long pulses = 5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "Y:Backward":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'Y').FirstOrDefault();
+                        long pulses = -5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "Z:Up":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'Z').FirstOrDefault();
+                        long pulses = -5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "Z:Down":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'Z').FirstOrDefault();
+                        long pulses = 5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "B:Up":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'B').FirstOrDefault();
+                        long pulses = -5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
+                        CommandHandler.Send(command);
+
+                        break;
+                    }
+
+                case "B:Down":
+                    {
+                        Motor motor = World.Motors.Where(q => q.Axis.Name == 'B').FirstOrDefault();
+                        long pulses = 5000;
+
+                        JogStartCommand command = new JogStartCommand(motor, pulses);
                         CommandHandler.Send(command);
 
                         break;
                     }
             }
+        }
+
+        public void JogEnd()
+        {
+            JogEndCommand command = new JogEndCommand();
+            CommandHandler.Send(command);
         }
     }
 }

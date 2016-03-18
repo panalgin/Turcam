@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Turcam.Commands
 {
-    public class JogCommand : BaseCommand
+    public class JogStartCommand : BaseCommand
     {
         public Motor AffectedMotor { get; set; }
 
-        public JogCommand(Motor affected, long pulses)
+        public JogStartCommand(Motor affected, long pulses)
         {
-            this.Name = "Jog";
+            this.Name = "JogStart";
 
             this.Parameters = string.Format("{0}:{1}", affected.Axis.ToString(), pulses.ToString());
         }

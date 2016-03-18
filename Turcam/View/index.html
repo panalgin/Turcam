@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="js/sys-menu.js"></script>
     <script type="text/javascript" src="js/tabbed-mdi.js"></script>
+    <script type="text/javascript" src="js/joystick.js"></script>
 </head>
 <body>
     <div class="top">
@@ -201,28 +202,25 @@
             <div class="header">TOUCH CONTROL</div>
             <div class="joystick-h">
                 <div class="rect-holder">
-                    <div class="rect-btn upper-left"></div>
-                    <div class="rect-btn upper-right"></div>
-                    <div class="rect-btn down-left"></div>
-                    <div class="rect-btn down-right"></div>
+                    <div id="up-bore-btn" class="rect-btn upper-left"></div>
+                    <div id="up-plasma-btn" class="rect-btn upper-right"></div>
+                    <div id="down-bore-btn" class="rect-btn down-left"></div>
+                    <div id="down-plasma-btn" class="rect-btn down-right"></div>
 
                     <div class="hor-seperator"></div>
                     <div class="ver-seperator"></div>
                 </div>
                 <div class="fake-circle"></div>
-                
-
                 <div class="touch-h">
-                    <div class="touch top-touch"><div class="arrow"></div></div>
-                    <div id="right-plazma-btn" class="touch right-touch"><div class="arrow"></div></div>
-                    <div class="touch bottom-touch"><div class="arrow"></div></div>
-                    <div id="left-plazma-btn" class="touch left-touch"><div class="arrow"></div></div>
+                    <div id="forward-btn" class="touch top-touch"><div class="arrow"></div></div>
+                    <div id="right-bore-btn" class="touch right-touch"><div class="arrow"></div></div>
+                    <div id="backward-btn" class="touch bottom-touch"><div class="arrow"></div></div>
+                    <div id="left-bore-btn" class="touch left-touch"><div class="arrow"></div></div>
                     <div class="hover-circle"></div>
                     <div class="base-circle">
-                        <div class="inner-touch inner-left-touch">
+                        <div id="right-plasma-btn" class="inner-touch inner-left-touch">
                         </div>
-                        <div class="inner-touch inner-right-touch">
-
+                        <div id="left-plasma-btn" class="inner-touch inner-right-touch">
                         </div>
                         <div class="inner-base-circle"></div>
                     </div>
@@ -230,22 +228,6 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).on("ready", function (e) {
-            $("div#right-plazma-btn").on("click", function (e) {
-                windowsApp.jog("A:Right");
-                e.preventDefault();
-            });
-
-            $("div#left-plazma-btn").on("click", function (e) {
-                windowsApp.jog("A:Left");
-                e.preventDefault();
-            })
-
-        });
-
-    </script>
 
     <script type="text/javascript">
 
