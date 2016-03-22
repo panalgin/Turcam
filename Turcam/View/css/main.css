@@ -219,12 +219,17 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 .touch-h { transform: rotate(45deg); position: relative; width: 152px; height: 152px; overflow: hidden; clear: both; left: 29px; top: 27px; }
 
-.rect-holder { width: 160px; height: 160px; position: absolute; top: 21px; left: 24.5px; background-color: red; }
+.rect-holder { width: 160px; height: 160px; position: absolute; top: 21px; left: 24.5px; }
 .rect-btn { width: 80px;  height: 80px; position: absolute; background-color: #2d2d30; }
-.upper-left { top: 0px; left: 0px; }
-.upper-right { top: 0px; right: 0px; }
-.down-left { left: 0px; bottom: 0px; }
-.down-right { right: 0px; bottom: 0px; }
+
+.upper-left { top: 0px; left: 0px; border-top-left-radius: 15px; }
+.upper-right { top: 0px; right: 0px; border-top-right-radius: 15px; }
+.down-left { left: 0px; bottom: 0px; border-bottom-left-radius: 15px; }
+.down-right {
+    right: 0px;
+    bottom: 0px;
+    border-bottom-right-radius: 15px;
+}
 
 .fake-circle { width: 164px; height: 164px; position: absolute; background-color: #39393d; border-radius: 50%; left: 23px; top: 19px; }
 
