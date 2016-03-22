@@ -11,7 +11,6 @@ namespace Turcam.Commands
         public JogEndCommand()
         {
             this.Name = "JogEnd";
-
             this.Parameters = string.Format("{0}", "All");
         }
     }

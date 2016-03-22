@@ -147,7 +147,7 @@ namespace Turcam
                         long pulses = 5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -157,7 +157,7 @@ namespace Turcam
                         long pulses = -5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -167,7 +167,7 @@ namespace Turcam
                         long pulses = 5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -178,7 +178,7 @@ namespace Turcam
                         long pulses = -5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -189,7 +189,7 @@ namespace Turcam
                         long pulses = 5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -200,7 +200,7 @@ namespace Turcam
                         long pulses = -5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -211,7 +211,7 @@ namespace Turcam
                         long pulses = -5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -222,7 +222,7 @@ namespace Turcam
                         long pulses = 5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -233,7 +233,7 @@ namespace Turcam
                         long pulses = -5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -244,7 +244,7 @@ namespace Turcam
                         long pulses = 5000;
 
                         JogStartCommand command = new JogStartCommand(motor, pulses);
-                        CommandHandler.Send(command);
+                        command.Send();
 
                         break;
                     }
@@ -254,7 +254,7 @@ namespace Turcam
         public void JogEnd()
         {
             JogEndCommand command = new JogEndCommand();
-            CommandHandler.Send(command);
+            command.Send();
         }
     }
 }

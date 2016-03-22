@@ -16,5 +16,15 @@ namespace Turcam.Commands
         {
             return string.Format("{0}: {1};", this.Name, this.Parameters);
         }
+
+        public virtual void Send()
+        {
+            ControlBoard board = World.ControlBoard;
+
+            if (board != null)
+                board.Send(this);
+            else
+                Logger.Enqueue(new System.Exception("Control board is null"));
+        }
     }
 }

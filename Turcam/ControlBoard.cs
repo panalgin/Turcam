@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Turcam.Commands;
 
 namespace Turcam
 {
@@ -7,6 +8,7 @@ namespace Turcam
     {
         private bool isConnected = false;
         private SerialConnection serialConnection;
+        private CommandHandler commandHandler;
 
         public SerialConnection SerialConnection {
             get
@@ -29,12 +31,14 @@ namespace Turcam
                 else
                     return false;
             }
-            private set { isConnected = value; }
-        }
 
+            set { isConnected = value; }
+        }
 
         public ControlBoard(SerialConnection connection, string name = "Default")
         {
+            commandHandler = new CommandHandler(this);
+
             this.Name = name;
             this.SerialConnection = connection;
         }
@@ -53,7 +57,7 @@ namespace Turcam
                         this.SerialConnection.NewLine = Environment.NewLine;
                         this.SerialConnection.Encoding = Encoding.UTF8;
                         this.SerialConnection.Open();
-                        this.Send(string.Format("Hello {0};", this.Name));
+                        this.Send(new HelloCommand(this.Name));
 
                     }
                     catch (Exception ex)
@@ -105,68 +109,17 @@ namespace Turcam
 
         public virtual void SerialConnection_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            Read();
-        }
-
-        public virtual void Parse(string data)
-        {
-            if (data.EndsWith(Environment.NewLine) || data.EndsWith("\0"))
-            {
-                data = data.Replace("\r\n", "").Replace("\n", "").Replace("\0", "");
-
-                EventSink.InvokeCommandReceived(new CommandEventArgs(this, data));
-
-                if (data.Contains(string.Format("Hello {0}", this.Name)))
-                {
-                    this.IsConnected = true;
-                    EventSink.InvokeConnected(this);
-                }
-                else if (data.StartsWith("A: "))
-                {
-                    data = data.Replace("A: ", "");
-
-                    ulong pos = 0;
-                    bool isNumber = ulong.TryParse(data, out pos);
-
-                    if (isNumber)
-                        EventSink.InvokePositionChanged("A", pos);
-                }
-            }
-        }
-
-        public virtual void Send(string command)
-        {
-            if (this.SerialConnection != null && this.SerialConnection.IsOpen)
-            {
-                try {
-                    this.SerialConnection.Write(command);
-
-                    CommandEventArgs args = new CommandEventArgs(this, command);
-                    EventSink.InvokeCommandSent(args);
-                }
-                catch(Exception ex)
-                {
-                    Logger.Enqueue(ex);
-                    CommandEventArgs args = new CommandEventArgs(this, command);
-                    EventSink.InvokeCommandFailed(args);
-                }
-            }
-        }
-
-        public virtual void Read()
-        {
-            int length = this.SerialConnection.BytesToRead;
-            byte[] buffer = new byte[length];
-            this.SerialConnection.Read(buffer, 0, length);
-
-            string data = Encoding.UTF8.GetString(buffer);
-
-            Parse(data);
+            commandHandler.Read();
         }
 
         public void Dispose()
         {
             this.SerialConnection.Dispose();
+        }
+
+        public void Send(BaseCommand command)
+        {
+            commandHandler.Send(command);
         }
     }
 }

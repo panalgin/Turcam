@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Turcam.Commands;
 
 namespace Turcam
 {
@@ -10,8 +11,6 @@ namespace Turcam
     {
         SerialConnection SerialConnection { get; set; }
         string Name { get; set; }
-        void Send(string command);
-        void Read();
-        void Parse(string data);
+        void Send(BaseCommand command);
     }
 }

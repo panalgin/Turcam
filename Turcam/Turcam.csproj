@@ -115,6 +115,7 @@
     <Compile Include="Axis.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
+    <Compile Include="Commands\HelloCommand.cs" />
     <Compile Include="Commands\JogEndCommand.cs" />
     <Compile Include="Commands\JogStartCommand.cs" />
     <Compile Include="Motor.cs" />
