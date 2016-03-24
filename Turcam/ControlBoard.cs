@@ -58,7 +58,6 @@ namespace Turcam
                         this.SerialConnection.Encoding = Encoding.UTF8;
                         this.SerialConnection.Open();
                         this.Send(new HelloCommand(this.Name));
-
                     }
                     catch (Exception ex)
                     {

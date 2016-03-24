@@ -1,7 +1,7 @@
 ﻿var axis = "{0}";
 var value = "{1}";
 
-switch (axis) {
+switch (axis) {{
     case "X":
         $("div#x-position").text(value); break;
 
@@ -16,4 +16,4 @@ switch (axis) {
 
     case "B":
         $("div#b-position").text(value); break;
-}
+}} // string.Format need to escape curly braces :P

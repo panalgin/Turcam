@@ -50,7 +50,7 @@ namespace Turcam.Commands
 
                 EventSink.InvokeCommandReceived(new CommandEventArgs(this.Board, data));
 
-                if (data.Contains(string.Format("Hello {0}", this.Board.Name)))
+                if (data.Contains(string.Format("Hello: {0}", this.Board.Name)))
                 {
                     this.Board.IsConnected = true;
                     EventSink.InvokeConnected(this.Board);

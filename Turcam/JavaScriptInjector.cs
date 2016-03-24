@@ -25,10 +25,10 @@ namespace Turcam
             { ScriptAction.CommandReceived, new ScriptInfo("View\\js\\async\\command-received.js", false) },
             { ScriptAction.Connected, new ScriptInfo("View\\js\\async\\connected.js", false) },
             { ScriptAction.Disconnected, new ScriptInfo("View\\js\\async\\disconnected.js", false) },
-            { ScriptAction.PositionChanged, new ScriptInfo("View\\js\\cached\\position-changed.js", true) }
+            { ScriptAction.PositionChanged, new ScriptInfo("View\\js\\cached\\position-changed.js", false) }
         };
 
-        public static void Run(ScriptAction action, params string[] parameters)
+        public static void Run(ScriptAction action, params object[] parameters)
         {
             var entity = ScriptEntities[action];
 

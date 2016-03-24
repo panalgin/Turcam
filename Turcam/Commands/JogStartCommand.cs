@@ -13,7 +13,6 @@ namespace Turcam.Commands
         public JogStartCommand(Motor affected, long pulses)
         {
             this.Name = "JogStart";
-
             this.Parameters = string.Format("{0}:{1}", affected.Axis.ToString(), pulses.ToString());
         }
     }
