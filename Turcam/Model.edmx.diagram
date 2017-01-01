@@ -4,7 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a669050524294500a036f86a1c0bc4e3" Name="Diagram1" />
+      <Diagram DiagramId="ef4f86b43e7f43a7aa3fce495a680736" Name="Diagram1" >
+        <EntityTypeShape EntityType="TurcamModel.DrillBit" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

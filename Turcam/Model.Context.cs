@@ -13,10 +13,10 @@ namespace Turcam
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class turcamEntities : DbContext
+    public partial class TurcamEntities : DbContext
     {
-        public turcamEntities()
-            : base("name=turcamEntities")
+        public TurcamEntities()
+            : base("name=TurcamEntities")
         {
         }
     
@@ -25,5 +25,6 @@ namespace Turcam
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<DrillBit> DrillBits { get; set; }
     }
 }
