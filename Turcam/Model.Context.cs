@@ -25,6 +25,6 @@ namespace Turcam
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DrillBit> DrillBits { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
     }
 }
