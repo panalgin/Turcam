@@ -26,9 +26,17 @@ namespace Turcam
     {
         public MainWindow()
         {
-            InitializeComponent();
-            this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController());
-            this.Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
+            InitializeComponent();          
+
+            this.Browser.BrowserSettings = new CefSharp.BrowserSettings
+            {
+                OffScreenTransparentBackground = false,
+                FileAccessFromFileUrls = CefState.Enabled,
+                UniversalAccessFromFileUrls = CefState.Enabled
+
+            };
+
+            this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController(), true);
 
             World.Initialize();
         }
@@ -42,14 +50,13 @@ namespace Turcam
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string page = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "View\\index.html");
+
             this.Browser.Load(page);
-            this.Browser.BrowserSettings = new CefSharp.BrowserSettings
-            {
-                OffScreenTransparentBackground = false
-            };
+
+            //this.Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
 
             //this.Browser.Load("http://www.vsynctester.com/");
-            
+
         }
 
         private void Browser_MouseDown(object sender, MouseButtonEventArgs e)

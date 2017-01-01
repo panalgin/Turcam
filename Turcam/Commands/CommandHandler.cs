@@ -8,6 +8,8 @@ namespace Turcam.Commands
 {
     public class CommandHandler
     {
+        private byte[] inputBuffer = new byte[256];
+
         public ControlBoard Board { get; private set; }
         public CommandHandler(ControlBoard board)
         {

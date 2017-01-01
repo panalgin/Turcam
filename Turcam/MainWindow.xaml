@@ -15,7 +15,7 @@
                     <GradientStop Color="#FF007ACC" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <cefSharp:ChromiumWebBrowser x:Name="Browser" MouseDown="Browser_MouseDown" Margin="0" />
+            <cefSharp:ChromiumWebBrowser x:Name="Browser" MouseDown="Browser_MouseDown" Margin="0" Address="" />
         </Border>
         <Rectangle x:Name="TitleArea" Height="30" Margin="5,5,102,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" MouseDown="TitleArea_MouseDown" Fill="#FFDC0000" MouseLeftButtonDown="TitleArea_MouseLeftButtonDown" Opacity="0"/>
         <Rectangle x:Name="GripBottomRight" HorizontalAlignment="Right" Height="10" Stroke="Black" VerticalAlignment="Bottom" Width="10" PreviewMouseLeftButtonDown="GripBottomRight_PreviewMouseLeftButtonDown" StrokeThickness="0" Cursor="SizeNWSE" Fill="#FFDC0000" Opacity="0"/>
