@@ -12,47 +12,22 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Diameter" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <EntityType Name="Items">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_DrillBits_Items">
-          <End Role="Items" Type="Self.Items" Multiplicity="1" />
-          <End Role="DrillBits" Type="Self.DrillBits" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="DrillBits">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="TurcamModelStoreContainer">
           <EntitySet Name="DrillBits" EntityType="Self.DrillBits" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_DrillBits_Items" Association="Self.FK_DrillBits_Items">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="DrillBits" EntitySet="DrillBits" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TurcamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TurcamEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Items" EntityType="TurcamModel.Item" />
+          <EntitySet Name="DrillBits" EntityType="TurcamModel.DrillBit" />
         </EntityContainer>
-        <EntityType Name="DrillBit" BaseType="TurcamModel.Item">
-          <Property Name="Diameter" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="Item">
+        <EntityType Name="DrillBit">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diameter" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -60,16 +35,11 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TurcamModelStoreContainer" CdmEntityContainer="TurcamEntities" >
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="IsTypeOf(TurcamModel.Item)">
-              <MappingFragment StoreEntitySet="Items">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(TurcamModel.DrillBit)">
+          <EntitySetMapping Name="DrillBits">
+            <EntityTypeMapping TypeName="TurcamModel.DrillBit">
               <MappingFragment StoreEntitySet="DrillBits">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

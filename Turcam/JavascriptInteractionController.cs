@@ -9,6 +9,7 @@ using System.Windows.Threading;
 using CefSharp;
 using System.IO;
 using Turcam.Commands;
+using Turcam.Controller;
 
 namespace Turcam
 {
@@ -97,6 +98,11 @@ namespace Turcam
         {
             if (World.ControlBoard != null)
                 World.ControlBoard.Disconnect();
+        }
+
+        public void Add(string json)
+        {
+            Controllers.Parse(json);
         }
 
         #region EventHooks

@@ -12,8 +12,9 @@ namespace Turcam
     using System;
     using System.Collections.Generic;
     
-    public partial class DrillBit : Item
+    public partial class DrillBit
     {
+        public int ID { get; set; }
         public decimal Diameter { get; set; }
     }
 }

@@ -122,10 +122,11 @@
     <Compile Include="Commands\HelloCommand.cs" />
     <Compile Include="Commands\JogEndCommand.cs" />
     <Compile Include="Commands\JogStartCommand.cs" />
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\Controllers.cs" />
+    <Compile Include="Controller\DrillBitController.cs" />
+    <Compile Include="Controller\IController.cs" />
     <Compile Include="DrillBit.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Item.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">

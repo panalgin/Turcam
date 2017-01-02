@@ -5,9 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ef4f86b43e7f43a7aa3fce495a680736" Name="Diagram1" >
-        <EntityTypeShape EntityType="TurcamModel.DrillBit" Width="1.5" PointX="3" PointY="0.875" />
-        <EntityTypeShape EntityType="TurcamModel.Item" Width="1.5" PointX="0.75" PointY="1" />
-        <InheritanceConnector EntityType="TurcamModel.DrillBit" />
+        <EntityTypeShape EntityType="TurcamModel.DrillBit" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

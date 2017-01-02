@@ -36,9 +36,9 @@ namespace Turcam
 
             };
 
-            this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController(), true);
-
             World.Initialize();
+
+            this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController(), true);
         }
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)

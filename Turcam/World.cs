@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Turcam.Controller;
 
 namespace Turcam
 {
@@ -11,21 +12,6 @@ namespace Turcam
         public static ControlBoard ControlBoard { get; set; }
         public static List<Axis> Axes { get; set; }
         public static List<Motor> Motors { get; set; }
-
-        public static IEnumerable<Item> Items
-        {
-            get
-            {
-                using (TurcamEntities m_Context = new TurcamEntities())
-                {
-                    m_Context.Configuration.ProxyCreationEnabled = false;
-                    m_Context.Configuration.AutoDetectChangesEnabled = false;
-                    m_Context.Configuration.LazyLoadingEnabled = false;
-
-                    return m_Context.Items;
-                }
-            }
-        }
 
         public static void Initialize()
         {
@@ -52,6 +38,8 @@ namespace Turcam
                     new Motor(Axes[4])
                 };
             }
+
+            Controllers.Initialize();
         }
     }
 }
