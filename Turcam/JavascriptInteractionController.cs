@@ -105,6 +105,26 @@ namespace Turcam
             Controllers.Parse(json);
         }
 
+        public void Update(string json)
+        {
+            Controllers.Parse(json);
+        }
+
+        public void Delete(string json)
+        {
+            Controllers.Parse(json);
+        }
+
+        public void Read(string json)
+        {
+            Controllers.Parse(json);
+        }
+
+        public void Get(string json)
+        {
+            Controllers.Parse(json);
+        }
+
         #region EventHooks
 
         private void EventSink_Disconnected(ControlBoard board)

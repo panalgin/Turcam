@@ -159,8 +159,6 @@
                 $("div.menu-btn").trigger("click");
                 $("div.tab-content").attr("tabindex", "-1").focus();
             }, 1000);
-
-
         });
 
     </script>
@@ -230,10 +228,7 @@
     </div>
 
     <script type="text/javascript">
-
         $(document).ready(function () {
-
-
             $('div.minimize').click(function (e) {
                 windowsApp.minimizeWindowState();
             });
@@ -302,6 +297,7 @@
         <li><img src="img/close.png" /> Add</li>
         <li>Open</li>
         <li><img src="img/close.png" /> Exit</li>
+        <li id="drillbits-item">Matkap Uçları</li>
     </ul>
     <ul class="sys-menu-pop" id="settings-pop">
         <li><img src="img/close.png" /> Add</li>
@@ -315,8 +311,6 @@
         <li><img src="img/close.png" /> Technical Support</li>
         <li><img src="img/close.png" /> About Turcam Studio</li>
     </ul>
-
-
     <div class="footer">
         <div class="footer-line"></div>
         <div class="status-bar">Ready</div>

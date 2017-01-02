@@ -235,6 +235,9 @@
     <Content Include="View\img\select-dropdown-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\inc\drillbits.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\inc\connections.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
