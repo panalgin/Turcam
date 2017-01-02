@@ -10,6 +10,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Length" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Shank" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Diameter" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityContainer Name="TurcamModelStoreContainer">
@@ -27,6 +30,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Length" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Shank" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Diameter" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
@@ -39,6 +45,9 @@
             <EntityTypeMapping TypeName="TurcamModel.DrillBit">
               <MappingFragment StoreEntitySet="DrillBits">
                 <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="Shank" ColumnName="Shank" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

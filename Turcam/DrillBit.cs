@@ -15,6 +15,9 @@ namespace Turcam
     public partial class DrillBit
     {
         public int ID { get; set; }
+        public decimal Length { get; set; }
+        public string Name { get; set; }
+        public decimal Shank { get; set; }
         public decimal Diameter { get; set; }
     }
 }

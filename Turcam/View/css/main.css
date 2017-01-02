@@ -10,6 +10,9 @@ img { padding: 0px; margin: 0px; border: none; }
 ::-webkit-scrollbar {
     width: 17px;
 }
+
+a, a:visited { color: #0097fb; text-decoration: none; }
+a:hover { color: #88ccfe; }
  
 /* Track */
 ::-webkit-scrollbar-track {
@@ -576,8 +579,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 #start-content b { font-family: Tahoma; font-size: 12px; font-weight: bold; position: absolute; top: 100px; left: 20px; }
 #start-content ul { margin: 0px; padding: 0px; list-style: none; list-style-type: none; position: absolute; top: 130px; left: 20px; display: block; font-size: 12px; }
 #start-content ul .spacer { height: 20px; background-color: transparent; border: 0px; }
-#start-content ul a, #start-content ul a:visited { display: block; color: #0097fb; text-decoration: none; line-height: 20px; }
-#start-content ul a:hover { color: #88ccfe; }
+#start-content ul a, #start-content ul a:visited { line-height: 20px; }
 
 #start-content .right { background-color: #1e1e1e; height:100%; position: absolute; top: 0px; left: 288px; right: 0px; overflow-y: scroll; overflow-x: auto; }
 #start-content .right .title { position: absolute; color: white; font-size: 20px; left: 23px; top: 24px; width: 100%; overflow: hidden; height: 28px; line-height: 28px; }
