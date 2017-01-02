@@ -10,6 +10,7 @@ using CefSharp;
 using System.IO;
 using Turcam.Commands;
 using Turcam.Controller;
+using System.Reflection;
 
 namespace Turcam
 {
@@ -161,6 +162,11 @@ namespace Turcam
         public string[] GetPortNames()
         {
             return SerialPort.GetPortNames();
+        }
+
+        public string GetVersion()
+        {
+            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         public void JogStart(string parameter)

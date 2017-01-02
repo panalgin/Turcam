@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WinInterop = System.Windows.Interop;
 using CefSharp;
+using System.Reflection;
 
 namespace Turcam
 {
@@ -49,14 +50,10 @@ namespace Turcam
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Title += string.Format(" - Version: {0}", version);
             string page = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "View\\index.html");
-
             this.Browser.Load(page);
-
-            //this.Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
-
-            //this.Browser.Load("http://www.vsynctester.com/");
-
         }
 
         private void Browser_MouseDown(object sender, MouseButtonEventArgs e)

@@ -11,8 +11,13 @@
     <script type="text/javascript" src="js/joystick.js"></script>
 </head>
 <body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div#title").append(" - " + windowsApp.getVersion());
+        });
+    </script>
     <div class="top">
-        <div class="title"><img src="img/logo.png" title="Anasayfa" />Turcam - Version 0.0.8</div>
+        <div class="title" id="title"><img src="img/logo.png" title="Anasayfa" /> Turcam</div>
         <ul class="menu">
             <li id="file-member" class="sys-menu-member">DOSYA</li>
             <li id="edit-member" class="sys-menu-member">DÜZENLE</li>
