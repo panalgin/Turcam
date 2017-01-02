@@ -7,26 +7,34 @@ using Turcam;
 
 namespace Turcam.Controller
 {
-    public sealed class DrillBitController : IController
+    public sealed class DrillBitController : BaseController
     {
-        public bool Add<T>(T type)
+        public override bool Add(string data)
         {
-            throw new NotImplementedException();
+            base.Add(data);
+
+            return false;
         }
 
-        public bool Delete<T>(T type)
+        public override bool Delete(string data)
         {
-            throw new NotImplementedException();
+            base.Delete(data);
+
+            return false;
         }
 
-        public List<T> Read<T>()
+        public override List<T> Read<T>()
         {
-            throw new NotImplementedException();
+            base.Read<T>();
+
+            return null;
         }
 
-        public bool Update<DrillBit>(DrillBit type)
+        public override bool Update(string data)
         {
-            throw new NotImplementedException();
+            base.Update(data);
+
+            return false;
         }
     }
 }

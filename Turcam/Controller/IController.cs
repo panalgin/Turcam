@@ -5,9 +5,10 @@ namespace Turcam.Controller
 {
     public interface IController
     {
-        bool Add<T>(T type);
-        bool Update<T>(T type);
-        bool Delete<T>(T type);
+        bool Add(string data);
+        bool Update(string data);
+        bool Delete(string data);
         List<T> Read<T>();
+        T Get<T>(int id);
     }
 }

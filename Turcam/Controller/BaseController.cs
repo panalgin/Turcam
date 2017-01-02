@@ -6,26 +6,28 @@ using System.Threading.Tasks;
 
 namespace Turcam.Controller
 {
-    public abstract class BaseController<T> where T : class, IController
+    public abstract class BaseController : IController
     {
-        public virtual bool Add<Type>(Type type)
+        public virtual bool Add(string data)
         {
             return true;
         }
-
-        public virtual bool Delete<Type>(Type type)
+        public virtual bool Delete(string data)
         {
             return true;
         }
-
-        public virtual List<Type> Read<Type>()
+        public virtual List<T> Read<T>()
         {
             return null;
         }
-
-        public virtual bool Update<Type>(Type type)
+        public virtual bool Update(string data)
         {
             return true;
+        }
+
+        public virtual T Get<T>(int id)
+        {
+            return default(T);
         }
     }
 }
