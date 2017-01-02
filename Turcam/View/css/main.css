@@ -595,3 +595,45 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 #start-content .right .news-hold .news-item .news-status { color: #3ddb12; float: left; }
 #start-content .right .news-hold .news-item .news-date { float:left; color: #a1a1a1; margin-left: 5px; }
 
+.tab-content .main {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    left: 0px;
+}
+
+.tab-content .main table {
+    width: calc(100% - 20px);
+    margin: 10px;
+    border: 1px solid #333;
+    border-spacing: 0px;
+    box-sizing: border-box;
+}
+
+.tab-content .main table tr th {
+    background-color: #3a3a3a;
+    border-right: 1px solid #333;
+    padding: 2px;
+}
+.tab-content .main table tr th:last-of-type {
+    border-right: none;
+}
+.tab-content .main table tr td {
+    text-align: center;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 2px;
+}
+.tab-content .main table tr td:last-of-type {
+    border-right: none;
+}
+
+.tab-content .main table tr:last-of-type td {
+    border-bottom: none;
+}
+
+.tab-content .main table tr:nth-child(even) {
+    background-color: #222;
+}
+
