@@ -36,14 +36,10 @@
             $("td a.edit").on("click", function (e) {
                 e.preventDefault();
 
-                alert("hü");
-
                 var id = $(this).attr("id").replace("edit-", "");
                 var modal = "modals/edit-drillbit.html";
 
-                alert(modal);
                 $.get(modal, function (html) {
-                    alert(html);
                     $(html).appendTo('body').modal();
                 });
             });

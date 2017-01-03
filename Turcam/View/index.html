@@ -331,6 +331,10 @@
                 windowsApp.showDevTools();
             });
         });
+
+        $("body").on($.modal.CLOSE, function (event, m) {
+            m.elm.remove();
+        });
     </script>
 </body>
 </html>

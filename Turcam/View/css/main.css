@@ -297,10 +297,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     width: 0px;
 	height: 0px;
     border-top: 5px solid transparent;
-    border-left: 8px solid #222222;
+    border-left: 8px solid #00AEFF;
     border-bottom: 5px solid transparent;
     position: absolute;
-    
 }
 
 .top-touch { 
