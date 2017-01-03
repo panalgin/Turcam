@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ef4f86b43e7f43a7aa3fce495a680736" Name="Diagram1" >
         <EntityTypeShape EntityType="TurcamModel.DrillBit" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TurcamModel.sysdiagram" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

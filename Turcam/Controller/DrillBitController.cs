@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Turcam;
+using Newtonsoft.Json;
 
 namespace Turcam.Controller
 {
@@ -23,11 +24,15 @@ namespace Turcam.Controller
             return false;
         }
 
-        public override List<T> Read<T>()
+        public override string Read()
         {
-            base.Read<T>();
+            base.Read();
 
-            return null;
+            using(TurcamEntities m_Context = new TurcamEntities())
+            {
+                var m_DrillBits = m_Context.DrillBits.ToList();
+                return JsonConvert.SerializeObject(m_DrillBits);
+            }
         }
 
         public override bool Update(string data)

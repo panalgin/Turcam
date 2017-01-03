@@ -164,6 +164,11 @@ namespace Turcam
             return SerialPort.GetPortNames();
         }
 
+        public string GetDrillBits()
+        {
+            return Controllers.DrillBitController.Read();
+        }
+
         public string GetVersion()
         {
             return Assembly.GetExecutingAssembly().GetName().Version.ToString();

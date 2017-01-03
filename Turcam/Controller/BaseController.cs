@@ -16,7 +16,7 @@ namespace Turcam.Controller
         {
             return true;
         }
-        public virtual List<T> Read<T>()
+        public virtual string Read()
         {
             return null;
         }

@@ -8,7 +8,7 @@ namespace Turcam.Controller
         bool Add(string data);
         bool Update(string data);
         bool Delete(string data);
-        List<T> Read<T>();
+        string Read();
         T Get<T>(int id);
     }
 }

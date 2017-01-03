@@ -26,5 +26,6 @@ namespace Turcam
         }
     
         public virtual DbSet<DrillBit> DrillBits { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

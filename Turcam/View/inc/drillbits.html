@@ -1,7 +1,7 @@
 ﻿<div id="drillbits-content" class="tab-content" tabindex="-1">
     <div class="header">Matkap Uçları <img src="img/comport-icon.png" /></div>
     <div class="main">
-        <table>
+        <table id="drillbits">
             <tr>
                 <th>#</th>
                 <th>Ad</th>
@@ -10,46 +10,36 @@
                 <th>Durum</th>
                 <th>İşlemler</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>HSS Co5 2mm Altın Seri</td>
-                <td>2.00mm</td>
-                <td>50mm</td>
-                <td>Boşta</td>
-                <td><a href="#">Düzenle</a> | <a href="#">Sil</a></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>HSS Co5 2mm Altın Seri</td>
-                <td>2.00mm</td>
-                <td>50mm</td>
-                <td>Boşta</td>
-                <td>Düzenle | Sil</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>HSS Co5 2mm Altın Seri</td>
-                <td>2.00mm</td>
-                <td>50mm</td>
-                <td>Boşta</td>
-                <td>Düzenle | Sil</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>HSS Co5 2mm Altın Seri</td>
-                <td>2.00mm</td>
-                <td>50mm</td>
-                <td>Boşta</td>
-                <td>Düzenle | Sil</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>HSS Co5 2mm Altın Seri</td>
-                <td>2.00mm</td>
-                <td>50mm</td>
-                <td>Boşta</td>
-                <td>Düzenle | Sil</td>
-            </tr>
         </table>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var drillbits = JSON.parse(windowsApp.getDrillBits());
+            var index, len;
+
+            for (index = 0, len = drillbits.length; index < len; index++) {
+                var item = drillbits[index];
+
+                var template = "<tr>" +
+                                    "<td>" + item.ID + "</td>" +
+                                    "<td>" + item.Name + "</td>" +
+                                    "<td>" + item.Diameter + "mm</td>" +
+                                    "<td>" + item.Length + "mm</td>" +
+                                    "<td>" + "Boşta" + "</td>" +
+                                    "<td><a class=\"edit\" id=\"edit-" + item.ID + "\" href=\"#\">Düzenle</a> | <a class=\"delete\" id=\"delete-" + item.ID + "\" href=\"#\">Sil</a></td>" +
+                                "</tr>";
+
+                $("table#drillbits").append(template);
+            }
+
+            $("td a.edit").on("click", function (e) {
+                alert("Edit tıklandı.");
+            });
+
+            $("td a.delete").on("click", function (e) {
+                alert("Delete tıklandı.")
+            });
+        });
+    </script>
 </div>
