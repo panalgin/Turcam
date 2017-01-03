@@ -34,11 +34,22 @@
             }
 
             $("td a.edit").on("click", function (e) {
-                alert("Edit tıklandı.");
+                e.preventDefault();
+
+                alert("hü");
+
+                var id = $(this).attr("id").replace("edit-", "");
+                var modal = "modals/edit-drillbit.html";
+
+                alert(modal);
+                $.get(modal, function (html) {
+                    alert(html);
+                    $(html).appendTo('body').modal();
+                });
             });
 
             $("td a.delete").on("click", function (e) {
-                alert("Delete tıklandı.")
+
             });
         });
     </script>

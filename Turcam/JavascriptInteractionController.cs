@@ -174,6 +174,15 @@ namespace Turcam
             return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
+        public void ShowDevTools()
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                MainWindow m_Main = Application.Current.MainWindow as MainWindow;
+                m_Main.Browser.ShowDevTools();
+            }));
+        }
+
         public void JogStart(string parameter)
         {
             switch(parameter)

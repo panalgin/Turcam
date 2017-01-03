@@ -442,6 +442,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     top: 0px;
     background-color: #46464a;
 }
+
 .status-bar {
     position: absolute;
     width: 100%;
@@ -450,6 +451,14 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background-color: #007acc;
     line-height: 23px;
     text-indent: 5px;
+}
+
+.status-bar .settings-wrench {
+    vertical-align: top;
+    margin: 3.5px;
+    float: right;
+    padding: 0px;
+    cursor: pointer;
 }
 
 .main-bar .tabs {

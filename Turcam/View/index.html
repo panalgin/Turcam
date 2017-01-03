@@ -5,10 +5,12 @@
     <meta charset="utf-8" />
     <title>Anasayfa</title>
     <link rel="stylesheet" href="css/main.css" media="all" type="text/css" />
+    <link rel="stylesheet" href="css/modal.min.css" type="text/css" />
     <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="js/sys-menu.js"></script>
     <script type="text/javascript" src="js/tabbed-mdi.js"></script>
     <script type="text/javascript" src="js/joystick.js"></script>
+    <script type="text/javascript" src="js/jquery.modal.min.js"></script>
 </head>
 <body>
     <script type="text/javascript">
@@ -318,7 +320,17 @@
     </ul>
     <div class="footer">
         <div class="footer-line"></div>
-        <div class="status-bar">Ready</div>
+        <div class="status-bar">Ready
+            <img src="img/settings.png" class="settings-wrench" id="settings-wrench" />
+        </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("img#settings-wrench").click(function (e) {
+                windowsApp.showDevTools();
+            });
+        });
+    </script>
 </body>
 </html>
