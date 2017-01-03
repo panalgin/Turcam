@@ -647,3 +647,34 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background-color: #222;
 }
 
+.modal-close {
+    top: 0px !important;
+    right: 0px !important;
+    width: 20px !important;
+    height: 20px !important;
+    background: none !important;
+    line-height: 20px !important;
+    text-align: center;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    border: none ;
+    background-image: url('../img/close.png') !important;
+}
+
+.modal-close:hover {
+    background-image: url('../img/close-hover.png') !important;
+}
+
+.modal .header {
+    background-color: #007acc;
+    line-height: 20px;
+    height: 20px;
+    display: block;
+    text-indent: 5px;
+}
+.modal .content {
+    padding: 0px 5px;
+    
+}
+
+

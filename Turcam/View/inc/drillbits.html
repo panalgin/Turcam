@@ -40,7 +40,7 @@
                 var modal = "modals/edit-drillbit.html";
 
                 $.get(modal, function (html) {
-                    $(html).appendTo('body').modal();
+                    $(html).appendTo('body').modal({closeClass: 'modal-close', closeText: ''});
                 });
             });
 
