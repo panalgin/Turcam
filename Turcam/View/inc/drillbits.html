@@ -37,11 +37,14 @@
                 e.preventDefault();
 
                 var id = $(this).attr("id").replace("edit-", "");
-                var modal = "modals/edit-drillbit.html";
+                var path = "modals/edit-drillbit.html";
+                var header = "Matkap Ucu Düzenle";
 
-                $.get(modal, function (html) {
+                createModal(header, path);
+
+                /*$.get(modal, function (html) {
                     $(html).appendTo('body').modal({closeClass: 'modal-close', closeText: ''});
-                });
+                });*/
             });
 
             $("td a.delete").on("click", function (e) {

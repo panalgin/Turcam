@@ -280,6 +280,9 @@
     <Content Include="View\js\jquery.modal.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\js\modal-handler.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\js\tabbed-mdi.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
