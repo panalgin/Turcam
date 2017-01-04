@@ -101,31 +101,6 @@ namespace Turcam
                 World.ControlBoard.Disconnect();
         }
 
-        public void Add(string json)
-        {
-            Controllers.Parse(json);
-        }
-
-        public void Update(string json)
-        {
-            Controllers.Parse(json);
-        }
-
-        public void Delete(string json)
-        {
-            Controllers.Parse(json);
-        }
-
-        public void Read(string json)
-        {
-            Controllers.Parse(json);
-        }
-
-        public void Get(string json)
-        {
-            Controllers.Parse(json);
-        }
-
         #region EventHooks
 
         private void EventSink_Disconnected(ControlBoard board)
@@ -167,6 +142,11 @@ namespace Turcam
         public string GetDrillBits()
         {
             return Controllers.DrillBitController.Read();
+        }
+
+        public string GetDrillBit(int id)
+        {
+            return Controllers.DrillBitController.Get(id);
         }
 
         public string GetVersion()

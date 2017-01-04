@@ -36,15 +36,12 @@
             $("td a.edit").on("click", function (e) {
                 e.preventDefault();
 
-                var id = $(this).attr("id").replace("edit-", "");
+                var id = parseInt($(this).attr("id").replace("edit-", ""));
+                var data = JSON.parse(windowsApp.getDrillBit(id));
                 var path = "modals/edit-drillbit.html";
                 var header = "Matkap Ucu Düzenle";
 
-                createModal(header, path);
-
-                /*$.get(modal, function (html) {
-                    $(html).appendTo('body').modal({closeClass: 'modal-close', closeText: ''});
-                });*/
+                createModal(header, path, data);
             });
 
             $("td a.delete").on("click", function (e) {

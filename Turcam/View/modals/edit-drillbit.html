@@ -1,5 +1,19 @@
-﻿<p>İçerik buraya</p>
+﻿<input type="hidden" id="actual-item" />
+
 <p>İçerik buraya</p>
 <p>İçerik buraya</p>
 <p>İçerik buraya</p>
 <p>İçerik buraya</p>
+<p>İçerik buraya</p>
+
+<script type="text/javascript">
+    $('body').one($.modal.OPEN, function (event, modal) {
+        var data = $("input#actual-item").data("drill")[0];
+
+        initializePage(data);
+    });
+
+    function initializePage(data) {
+
+    }
+</script>

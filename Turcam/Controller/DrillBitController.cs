@@ -41,5 +41,20 @@ namespace Turcam.Controller
 
             return false;
         }
+
+        public override string Get(int id)
+        {
+            base.Get(id);
+
+            using(TurcamEntities m_Context = new TurcamEntities())
+            {
+                var m_DrillBit = m_Context.DrillBits.Where(q => q.ID == id);
+
+                if (m_DrillBit != null)
+                    return JsonConvert.SerializeObject(m_DrillBit);
+                else
+                    return null;
+            }
+        }
     }
 }

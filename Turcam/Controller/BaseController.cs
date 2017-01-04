@@ -25,9 +25,9 @@ namespace Turcam.Controller
             return true;
         }
 
-        public virtual T Get<T>(int id)
+        public virtual string Get(int id)
         {
-            return default(T);
+            return null;
         }
     }
 }

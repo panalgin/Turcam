@@ -9,6 +9,6 @@ namespace Turcam.Controller
         bool Update(string data);
         bool Delete(string data);
         string Read();
-        T Get<T>(int id);
+        string Get(int id);
     }
 }
