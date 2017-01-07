@@ -673,8 +673,36 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-indent: 5px;
 }
 .modal .content {
-    padding: 0px 5px;
-    
+    padding: 5px 5px;
+    overflow: hidden;
+}
+
+.modal .content .row { 
+    display: block;
+    clear: both;
+}
+
+.modal .content .row .cell {
+    line-height: 25px;
+    height: 25px;
+    width: 50%;
+    display: block; 
+    float: left;
+    overflow: hidden;
+}
+
+.modal .content .row .left {
+    float: left;
+    text-align: right;
+    padding-right: 5px;
+    width: calc(30% - 5px);    
+}
+
+.modal .content .row .right {
+    float: left;
+    text-align: left;
+    padding-left: 5px;
+    width: calc(70% - 5px);
 }
 
 
