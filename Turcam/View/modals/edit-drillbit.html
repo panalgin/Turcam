@@ -6,15 +6,21 @@
 </div>
 <div class="row">
     <div class="cell left">Çap</div>
-    <div class="cell right"><input id="diameter-box" type="number" step="0.10" value="" /></div>
+    <div class="cell right"><input min="0.01" max="1000" id="diameter-box" type="number" step="0.10" value="" /></div>
 </div>
 <div class="row">
     <div class="cell left">Uzunluk</div>
-    <div class="cell right"><input id="length-box" type="number" step="0.01" value="" /></div>
+    <div class="cell right"><input  min="0.01" max="1000" id="length-box" type="number" step="0.01" value="" /></div>
 </div>
 <div class="row">
     <div class="cell left">Shank</div>
-    <div class="cell right"><input id="shank-box" type="number" step="0.01" value="" /></div>
+    <div class="cell right"><input  min="0.01" max="1000" id="shank-box" type="number" step="0.01" value="" /></div>
+</div>
+<div class="row">
+    <div class="cell float-right">
+        <button id="save-button" type="button">Kaydet</button>
+        <button id="cancel-button" type="button">İptal</button>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -22,6 +28,14 @@
         var data = $("input#actual-item").data("drill")[0];
 
         initializePage(data);
+    });
+
+    $('button#cancel-button').on("click", function (e) {
+        $.modal.close();
+    });
+
+    $('button#save-button').on("click", function (e) {
+
     });
 
     function initializePage(data) {

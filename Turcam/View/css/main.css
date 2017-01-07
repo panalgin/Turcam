@@ -705,4 +705,45 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     width: calc(70% - 5px);
 }
 
+.modal .content .row .float-right {
+    float: right;
+    text-align: right;
+
+}
+
+.modal .content input[type='number'], .modal .content input[type='text'] {
+    outline: none;
+    background-color: #2d2d30;
+    border: 1px solid #3f3f46;
+    color: #fff;
+    font-family: Tahoma;
+    font-size: 11px;
+    padding: 3px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0; 
+}
+
+.modal .content button {
+    height: 20px;
+    font-family: Tahoma;
+    font-size: 11px;
+    background-color: #007acc;
+    color: #fff;
+    border: 1px solid #1597ef;
+    text-align: center;
+    margin: 0px;
+    padding: 0px 10px;
+    line-height: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+.modal .content button:hover { background-color: #1487d5; }
+.modal .content button:active { background-color: #164462 }
+
 
