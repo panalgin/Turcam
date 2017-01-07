@@ -20,9 +20,9 @@ namespace Turcam.Controller
         {
             return null;
         }
-        public virtual bool Update(string data)
+        public virtual string Update(string data)
         {
-            return true;
+            return null;
         }
 
         public virtual string Get(int id)

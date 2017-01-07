@@ -220,6 +220,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="View\img\ajax-loader.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\img\announce-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

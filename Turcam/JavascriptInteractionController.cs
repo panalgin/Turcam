@@ -11,6 +11,7 @@ using System.IO;
 using Turcam.Commands;
 using Turcam.Controller;
 using System.Reflection;
+using System.Threading;
 
 namespace Turcam
 {
@@ -139,6 +140,8 @@ namespace Turcam
             return SerialPort.GetPortNames();
         }
 
+        #region DrillBit Handling
+
         public string GetDrillBits()
         {
             return Controllers.DrillBitController.Read();
@@ -148,6 +151,13 @@ namespace Turcam
         {
             return Controllers.DrillBitController.Get(id);
         }
+
+        public string EditDrillBit(string json)
+        {
+            return Controllers.DrillBitController.Update(json);
+        }
+
+        #endregion
 
         public string GetVersion()
         {

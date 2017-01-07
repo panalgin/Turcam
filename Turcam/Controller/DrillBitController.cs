@@ -35,11 +35,42 @@ namespace Turcam.Controller
             }
         }
 
-        public override bool Update(string data)
+        public override string Update(string data)
         {
             base.Update(data);
 
-            return false;
+            DrillBit m_PassedBit = JsonConvert.DeserializeObject<DrillBit>(data);
+
+            if (m_PassedBit != null)
+            {
+                using (TurcamEntities m_Context = new TurcamEntities())
+                {
+                    DrillBit m_ActualBit = m_Context.DrillBits.Where(q => q.ID == m_PassedBit.ID).FirstOrDefault();
+
+                    if (m_ActualBit != null)
+                    {
+                        try
+                        {
+                            m_ActualBit.Name = m_PassedBit.Name;
+                            m_ActualBit.Diameter = m_PassedBit.Diameter;
+                            m_ActualBit.Length = m_PassedBit.Length;
+                            m_ActualBit.Shank = m_PassedBit.Shank;
+
+                            m_Context.SaveChanges();
+
+                            return "OK";
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Enqueue(ex);
+
+                            return ex.Message;
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         public override string Get(int id)
