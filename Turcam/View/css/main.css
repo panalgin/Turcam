@@ -707,7 +707,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .modal .content .row .float-right {
     float: right;
     text-align: right;
-
+    width: 100%;
 }
 
 .modal .content input[type='number'], .modal .content input[type='text'] {
@@ -748,6 +748,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal .content .error {
     color: rgba(255,64,13,1);
     display: none;
+    float: left;
 }
 .modal .content .ajax {
     margin: 0px;

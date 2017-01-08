@@ -48,6 +48,16 @@ function getPage(name) {
     }
 }
 
+function refreshPage(name) {
+    if ($("div#" + name + "-content").length > 0) {
+        $.get("inc/" + name + ".html", function (data) {
+            $("div#" + name + "-content").html($(data).html());
+        });
+
+        selectPage(name + "-content");
+    }
+}
+
 $(document).on("ready", function (e) {
     $("div.tabs").on("mousedown", "div.tab", function (e) {
         $("div.tab-content").off("focusout"); // disable focusout

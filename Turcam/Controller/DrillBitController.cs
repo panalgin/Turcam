@@ -49,6 +49,11 @@ namespace Turcam.Controller
 
                     if (m_ActualBit != null)
                     {
+                        DrillBit m_AnotherExists = m_Context.DrillBits.Where(q => q.Name != m_ActualBit.Name && q.Name == m_PassedBit.Name).FirstOrDefault();
+
+                        if (m_AnotherExists != null)
+                            return "Bu isimle kaydedilmiş başka bir takım mevcut.";
+
                         try
                         {
                             m_ActualBit.Name = m_PassedBit.Name;

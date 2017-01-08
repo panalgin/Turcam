@@ -47,6 +47,10 @@
             $("td a.delete").on("click", function (e) {
                 e.preventDefault();
             });
+
+            $("body").on($.modal.CLOSE, function (event, m) {
+                refreshPage("drillbits");
+            });
         });
     </script>
 </div>
