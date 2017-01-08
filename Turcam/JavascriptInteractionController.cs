@@ -157,6 +157,11 @@ namespace Turcam
             return Controllers.DrillBitController.Update(json);
         }
 
+        public string AddDrillBit(string json)
+        {
+            return Controllers.DrillBitController.Add(json);
+        }
+
         #endregion
 
         public string GetVersion()

@@ -8,9 +8,9 @@ namespace Turcam.Controller
 {
     public abstract class BaseController : IController
     {
-        public virtual bool Add(string data)
+        public virtual string Add(string data)
         {
-            return true;
+            return null;
         }
         public virtual bool Delete(string data)
         {

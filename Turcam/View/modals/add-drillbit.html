@@ -37,6 +37,7 @@
         $("img#ajax").show();
 
         var tool = new Object();
+
         tool.Name = $("input#name-box").val();
         tool.Diameter = $("input#diameter-box").val();
         tool.Length = $("input#length-box").val();
@@ -49,6 +50,8 @@
 
         if (result == "OK") {
             $("span#error").hide();
+            refreshPage("drillbits");
+
             $.modal.close();
         }
         else {

@@ -39,7 +39,13 @@ namespace Turcam
 
             World.Initialize();
 
+            this.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
             this.Browser.RegisterJsObject("windowsApp", new JavascriptInteractionController(), true);
+        }
+
+        private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
+        {
+
         }
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)

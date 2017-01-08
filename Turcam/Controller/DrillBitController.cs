@@ -10,11 +10,47 @@ namespace Turcam.Controller
 {
     public sealed class DrillBitController : BaseController
     {
-        public override bool Add(string data)
+        public override string Add(string data)
         {
             base.Add(data);
 
-            return false;
+            DrillBit m_PassedBit = JsonConvert.DeserializeObject<DrillBit>(data);
+
+            if (m_PassedBit != null)
+            {
+                using (TurcamEntities m_Context = new TurcamEntities())
+                {
+                    DrillBit m_ExistingBit = m_Context.DrillBits.Where(q => q.Name == m_PassedBit.Name).FirstOrDefault();
+
+                    if (m_ExistingBit != null)
+                        return "Bu isimle kaydedilmiş başka bir takım mevcut.";
+                    else
+                    {
+                        try
+                        {
+                            DrillBit m_Bit = new DrillBit();
+
+                            m_Bit.Name = m_PassedBit.Name;
+                            m_Bit.Diameter = m_PassedBit.Diameter;
+                            m_Bit.Length = m_PassedBit.Diameter;
+                            m_Bit.Shank = m_PassedBit.Shank;
+
+                            m_Context.DrillBits.Add(m_Bit);
+                            m_Context.SaveChanges();
+
+                            return "OK";
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Enqueue(ex);
+
+                            return ex.Message;
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         public override bool Delete(string data)
@@ -30,7 +66,7 @@ namespace Turcam.Controller
 
             using(TurcamEntities m_Context = new TurcamEntities())
             {
-                var m_DrillBits = m_Context.DrillBits.ToList();
+                var m_DrillBits = m_Context.DrillBits.OrderBy(q => q.Name).ToList();
                 return JsonConvert.SerializeObject(m_DrillBits);
             }
         }
