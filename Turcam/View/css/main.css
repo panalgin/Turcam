@@ -759,4 +759,23 @@ input[type=number]::-webkit-outer-spin-button {
     display: none;
 }
 
+.add-from-header {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    font-family: Tahoma;
+    font-size: 11px;
+    background-color: #007acc;
+    color: #fff;
+    border: 1px solid #1597ef;
+    text-align: center;
+    margin: 2px 5px;
+    padding: 0px 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.add-from-header:hover { background-color: #1487d5; }
+.add-from-header:active { background-color: #164462 }
+
 

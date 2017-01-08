@@ -6,12 +6,15 @@
     <title>Anasayfa</title>
     <link rel="stylesheet" href="css/main.css" media="all" type="text/css" />
     <link rel="stylesheet" href="css/modal.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.structure.min.css" type="text/css" />
     <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="js/sys-menu.js"></script>
     <script type="text/javascript" src="js/tabbed-mdi.js"></script>
     <script type="text/javascript" src="js/joystick.js"></script>
     <script type="text/javascript" src="js/jquery.modal.min.js"></script>
     <script type="text/javascript" src="js/modal-handler.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 </head>
 <body>
     <script type="text/javascript">
@@ -333,6 +336,9 @@
             });
         });
 
+        $("body").on($.modal.OPEN, function (event, m) {
+            $("div.modal").draggable({ handle: 'div.header' });
+        });
         $("body").on($.modal.CLOSE, function (event, m) {
             m.elm.remove();
         });

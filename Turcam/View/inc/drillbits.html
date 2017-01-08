@@ -1,5 +1,5 @@
 ﻿<div id="drillbits-content" class="tab-content" tabindex="-1">
-    <div class="header">Matkap Uçları <img src="img/matkap.png" /></div>
+    <div class="header">Matkap Uçları <img src="img/matkap.png" /> <button class="add-from-header" id="add-new-drillbit" type="button">Yeni</button></div>
     <div class="main">
         <table id="drillbits">
             <tr>
@@ -44,12 +44,18 @@
                 createModal(header, path, data);
             });
 
-            $("td a.delete").on("click", function (e) {
+            $("button#add-new-drillbit").on("click", function (e) {
                 e.preventDefault();
+
+                var path = "modals/add-drillbit.html";
+                var header = "Yeni Matkap Ucu Ekle";
+
+                createModal(header, path, null);
+
             });
 
-            $("body").on($.modal.CLOSE, function (event, m) {
-                refreshPage("drillbits");
+            $("td a.delete").on("click", function (e) {
+                e.preventDefault();
             });
         });
     </script>
