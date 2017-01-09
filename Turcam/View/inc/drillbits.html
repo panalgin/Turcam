@@ -56,6 +56,13 @@
 
             $("td a.delete").on("click", function (e) {
                 e.preventDefault();
+
+                var id = parseInt($(this).attr("id").replace("delete-", ""));
+                var data = JSON.parse(windowsApp.getDrillBit(id));
+                var path = "modals/delete-drillbit.html";
+                var header = "Uyarı";
+
+                createModal(header, path, data, "Question");
             });
         });
     </script>

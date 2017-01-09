@@ -298,6 +298,9 @@
     <Content Include="View\js\tabbed-mdi.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\modals\delete-drillbit.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\modals\add-drillbit.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

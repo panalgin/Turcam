@@ -664,6 +664,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background-image: url('../img/close-hover.png') !important;
 }
 
+.modal {
+    border: 1px solid #007acc; 
+}
 .modal .header {
     background-color: #007acc;
     line-height: 20px;
@@ -671,6 +674,22 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     display: block;
     text-indent: 5px;
     cursor: move;
+}
+
+.question {
+    border: 1px solid rgba(255,64,13,1);
+}
+
+.error {
+    border: 1px solid rgba(255,18,26,1);
+}
+
+.question .header {
+    background-color: rgba(255,64,13,1);
+}
+
+.error .header {
+    background-color: rgba(255,18,26,1);
 }
 .modal .content {
     padding: 5px 5px;
@@ -703,6 +722,12 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-align: left;
     padding-left: 5px;
     width: calc(70% - 5px);
+}
+
+.modal .content .row .full {
+    float: left;
+    text-align: left;
+    width: 100%;
 }
 
 .modal .content .row .float-right {
@@ -746,7 +771,7 @@ input[type=number]::-webkit-outer-spin-button {
 .modal .content button:hover { background-color: #1487d5; }
 .modal .content button:active { background-color: #164462 }
 
-.modal .content .error {
+.modal .content .error-text {
     color: rgba(255,64,13,1);
     display: none;
     float: left;

@@ -1,31 +1,21 @@
-﻿<div class="row">
-    <div class="cell left">İsim</div>
-    <div class="cell right"><input id="name-box" type="text" value="" spellcheck="false" /></div>
-</div>
+﻿<input type="hidden" id="actual-item" />
 <div class="row">
-    <div class="cell left">Çap</div>
-    <div class="cell right"><input min="0.01" max="1000" id="diameter-box" type="number" step="0.10" value="1.00" /></div>
-</div>
-<div class="row">
-    <div class="cell left">Uzunluk</div>
-    <div class="cell right"><input min="0.01" max="1000" id="length-box" type="number" step="0.01" value="1.00" /></div>
-</div>
-<div class="row">
-    <div class="cell left">Shank</div>
-    <div class="cell right"><input min="0.01" max="1000" id="shank-box" type="number" step="0.01" value="1.00" /></div>
+    <div class="cell full"><span id="object-to-delete"></span> adındaki nesne silinecek, emin misiniz?</div>
 </div>
 <div class="row">
     <div class="cell float-right">
         <span id="error" class="error-text">Burda bir hata oluştu.</span>
         <img id="ajax" class="ajax" src="img/ajax-loader.gif" />
-        <button id="save-button" type="button">Kaydet</button>
-        <button id="cancel-button" type="button">İptal</button>
+        <button id="save-button" type="button">Evet</button>
+        <button id="cancel-button" type="button">Hayır</button>
     </div>
 </div>
 
 <script type="text/javascript">
     $('body').one($.modal.OPEN, function (event, modal) {
-        $("input#name-box").focus();
+        var data = $("input#actual-item").data("drill")[0];
+
+        initializePage(data);
     });
 
     $('button#cancel-button').on("click", function (e) {
@@ -35,8 +25,6 @@
     $('button#save-button').on("click", function (e) {
         $("span#error").hide();
         $("img#ajax").show();
-
-        var tool = new Object();
 
         tool.Name = $("input#name-box").val();
         tool.Diameter = $("input#diameter-box").val();
@@ -59,4 +47,8 @@
             $("span#error").show();
         }
     });
+
+    function initializePage(data) {
+        $("span#object-to-delete").text(data.Name);
+    }
 </script>
