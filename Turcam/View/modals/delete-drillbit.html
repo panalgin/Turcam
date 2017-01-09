@@ -26,24 +26,19 @@
         $("span#error").hide();
         $("img#ajax").show();
 
-        tool.Name = $("input#name-box").val();
-        tool.Diameter = $("input#diameter-box").val();
-        tool.Length = $("input#length-box").val();
-        tool.Shank = $("input#shank-box").val();
-
-        var toolInfo = JSON.stringify(tool);
-        var result = windowsApp.addDrillBit(toolInfo);
+        var tool = $("input#actual-item").data("drill")[0];
+        var result = windowsApp.deleteDrillBit(tool.ID);
 
         $("img#ajax").hide();
 
-        if (result == "OK") {
+        if (result == true) {
             $("span#error").hide();
             refreshPage("drillbits");
 
             $.modal.close();
         }
         else {
-            $("span#error").text(result);
+            $("span#error").text("Bu nesne silinemedi.");
             $("span#error").show();
         }
     });

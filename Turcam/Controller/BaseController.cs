@@ -12,7 +12,7 @@ namespace Turcam.Controller
         {
             return null;
         }
-        public virtual bool Delete(string data)
+        public virtual bool Delete(int id)
         {
             return true;
         }

@@ -53,11 +53,25 @@ namespace Turcam.Controller
             return null;
         }
 
-        public override bool Delete(string data)
+        public override bool Delete(int id)
         {
-            base.Delete(data);
+            base.Delete(id);
 
-            return false;
+            using (TurcamEntities m_Context = new TurcamEntities())
+            {
+                var m_ActualBit = m_Context.DrillBits.Where(q => q.ID == id).FirstOrDefault();
+
+                if (m_ActualBit != null)
+                {
+                    m_Context.DrillBits.Remove(m_ActualBit);
+                    m_Context.SaveChanges();
+
+                    return true;
+                }
+
+                else
+                    return false;
+            }
         }
 
         public override string Read()
