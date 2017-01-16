@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WinFormTest.Properties
+namespace Turcam.Properties
 {
 
 
