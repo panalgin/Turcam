@@ -12,6 +12,7 @@ using Turcam.Controller;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using Turcam.Logic;
 
 namespace Turcam
 {
@@ -185,6 +186,20 @@ namespace Turcam
                 m_Form.Browser.ShowDevTools();
             }));
         }
+
+        #region Window Handling
+        public void ResizeWindow(int dir)
+        {
+            MainForm m_Form = Application.OpenForms[0] as MainForm;
+            m_Form.ForceResize((ResizeDirection)dir);
+        }
+
+        public void DragWindow()
+        {
+            MainForm m_Form = Application.OpenForms[0] as MainForm;
+            m_Form.ForceDrag();
+        }
+        #endregion
 
         public void JogStart(string parameter)
         {

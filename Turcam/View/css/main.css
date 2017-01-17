@@ -804,4 +804,22 @@ input[type=number]::-webkit-outer-spin-button {
 .add-from-header:hover { background-color: #1487d5; }
 .add-from-header:active { background-color: #164462 }
 
+.thumb {
+    position: absolute;
+    background-color: #ff00ea;
+    opacity: 0.0;
+    overflow: hidden;
+    display: block;
+}
+
+.caption { height: 25px; top: 4px; left: 150px; right: 105px; cursor: grab;}
+.left-thumb { width: 4px; top: 30px; bottom: 30px; left: 0px; cursor: w-resize; }
+.right-thumb { width: 4px; top: 30px; bottom: 30px; right: 0px; cursor: e-resize; }
+.top-thumb { height: 4px; top: 0px; left: 30px; right: 30px; cursor: n-resize; }
+.bottom-thumb { height: 4px; bottom: 0px; left: 30px; right: 30px; cursor: s-resize; }
+.top-left-thumb { height: 7px; width: 7px; top: 0px; left: 0px; cursor: nw-resize; }
+.bottom-left-thumb { height: 7px; width: 7px; bottom: 0px; left: 0px; cursor: sw-resize; }
+.top-right-thumb { height: 7px; width: 7px; top: 0px; right: 0px; cursor: ne-resize; }
+.bottom-right-thumb { height: 7px; width: 7px; bottom: 0px; right: 0px; cursor: se-resize; }
+
 

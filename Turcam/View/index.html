@@ -329,10 +329,55 @@
         </div>
     </div>
 
+    <div class="thumb caption"></div>
+    <div class="thumb left-thumb" data-dir="0"></div>
+    <div class="thumb right-thumb" data-dir="1"></div>
+    <div class="thumb top-thumb" data-dir="2"></div>
+    <div class="thumb bottom-thumb" data-dir="3"></div>
+    <div class="thumb top-left-thumb" data-dir="4"></div>
+    <div class="thumb bottom-left-thumb" data-dir="5"></div>
+    <div class="thumb top-right-thumb" data-dir="6"></div>
+    <div class="thumb bottom-right-thumb" data-dir="7"></div>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("img#settings-wrench").click(function (e) {
                 windowsApp.showDevTools();
+            });
+
+            $("div.thumb").not("div.caption").on("mousedown", function (e) {
+                e.preventDefault();
+
+                var direction = parseInt($(this).data("dir"));
+                windowsApp.resizeWindow(direction);
+            });
+
+            var clicks = 0, delay = 400;
+
+            $("div.caption").on('mousedown', function (event) {
+                event.preventDefault();
+
+                clicks++;
+
+                setTimeout(function () {
+                    clicks = 0;
+                }, delay);
+
+                if (clicks === 2) {
+                    console.log("double clickled");
+
+                    var result = windowsApp.toggleWindowState();
+                    if (result == true)
+                        $("div.maximize").addClass("restore");
+                    else
+                        $("div.maximize").removeClass("restore");
+
+                    clicks = 0;
+
+                    return;
+                } else {
+                    windowsApp.dragWindow();
+                }
             });
         });
 

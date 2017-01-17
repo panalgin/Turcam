@@ -116,6 +116,7 @@
     <Compile Include="JavascriptInjector.cs" />
     <Compile Include="JavascriptInteractionController.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Logic\ResizeDirections.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,9 +146,6 @@
     </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TransparentPanel.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="World.cs" />
     <EmbeddedResource Include="MainForm.resx">
