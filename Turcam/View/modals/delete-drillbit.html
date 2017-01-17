@@ -1,0 +1,49 @@
+﻿<input type="hidden" id="actual-item" />
+<div class="row">
+    <div class="cell full"><span id="object-to-delete"></span> adındaki nesne silinecek, emin misiniz?</div>
+</div>
+<div class="row">
+    <div class="cell float-right">
+        <span id="error" class="error-text">Burda bir hata oluştu.</span>
+        <img id="ajax" class="ajax" src="img/ajax-loader.gif" />
+        <button id="save-button" type="button">Evet</button>
+        <button id="cancel-button" type="button">Hayır</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('body').one($.modal.OPEN, function (event, modal) {
+        var data = $("input#actual-item").data("drill")[0];
+
+        initializePage(data);
+    });
+
+    $('button#cancel-button').on("click", function (e) {
+        $.modal.close();
+    });
+
+    $('button#save-button').on("click", function (e) {
+        $("span#error").hide();
+        $("img#ajax").show();
+
+        var tool = $("input#actual-item").data("drill")[0];
+        var result = windowsApp.deleteDrillBit(tool.ID);
+
+        $("img#ajax").hide();
+
+        if (result == true) {
+            $("span#error").hide();
+            refreshPage("drillbits");
+
+            $.modal.close();
+        }
+        else {
+            $("span#error").text("Bu nesne silinemedi.");
+            $("span#error").show();
+        }
+    });
+
+    function initializePage(data) {
+        $("span#object-to-delete").text(data.Name);
+    }
+</script>

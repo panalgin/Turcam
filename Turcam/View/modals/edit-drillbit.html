@@ -1,0 +1,71 @@
+﻿<input type="hidden" id="actual-item" />
+
+<div class="row">
+    <div class="cell left">İsim</div>
+    <div class="cell right"><input id="name-box" type="text" value="" spellcheck="false" /></div>
+</div>
+<div class="row">
+    <div class="cell left">Çap</div>
+    <div class="cell right"><input min="0.01" max="1000" id="diameter-box" type="number" step="0.10" value="" /></div>
+</div>
+<div class="row">
+    <div class="cell left">Uzunluk</div>
+    <div class="cell right"><input  min="0.01" max="1000" id="length-box" type="number" step="0.01" value="" /></div>
+</div>
+<div class="row">
+    <div class="cell left">Shank</div>
+    <div class="cell right"><input  min="0.01" max="1000" id="shank-box" type="number" step="0.01" value="" /></div>
+</div>
+<div class="row">
+    <div class="cell float-right">
+        <span id="error" class="error-text">Burda bir hata oluştu.</span>
+        <img id="ajax" class="ajax" src="img/ajax-loader.gif" />
+        <button id="save-button" type="button">Kaydet</button>
+        <button id="cancel-button" type="button">İptal</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('body').one($.modal.OPEN, function (event, modal) {
+        var data = $("input#actual-item").data("drill")[0];
+
+        initializePage(data);
+    });
+
+    $('button#cancel-button').on("click", function (e) {
+        $.modal.close();
+    });
+
+    $('button#save-button').on("click", function (e) {
+        $("span#error").hide();
+        $("img#ajax").show();
+
+        var tool = $("input#actual-item").data("drill")[0];
+        tool.Name = $("input#name-box").val();
+        tool.Diameter = $("input#diameter-box").val();
+        tool.Length = $("input#length-box").val();
+        tool.Shank = $("input#shank-box").val();
+
+        var toolInfo = JSON.stringify(tool);
+        var result = windowsApp.editDrillBit(toolInfo);
+
+        $("img#ajax").hide();
+
+        if (result == "OK") {
+            $("span#error").hide();
+            refreshPage("drillbits");
+            $.modal.close();
+        }
+        else {
+            $("span#error").text(result);
+            $("span#error").show();
+        }
+    });
+
+    function initializePage(data) {
+        $("input#name-box").val(data.Name);
+        $("input#diameter-box").val(data.Diameter);
+        $("input#length-box").val(data.Length);
+        $("input#shank-box").val(data.Shank);
+    }
+</script>

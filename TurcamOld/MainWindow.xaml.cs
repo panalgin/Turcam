@@ -32,8 +32,7 @@ namespace Turcam
             this.Browser.BrowserSettings = new CefSharp.BrowserSettings
             {
                 OffScreenTransparentBackground = false,
-                FileAccessFromFileUrls = CefState.Enabled,
-                UniversalAccessFromFileUrls = CefState.Enabled
+
 
             };
 

@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="css/main.css" media="all" type="text/css" />
+    <link rel="stylesheet" href="css/modal.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.structure.min.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/sys-menu.js"></script>
+    <script type="text/javascript" src="js/tabbed-mdi.js"></script>
+    <script type="text/javascript" src="js/joystick.js"></script>
+    <script type="text/javascript" src="js/jquery.modal.min.js"></script>
+    <script type="text/javascript" src="js/modal-handler.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div#title").append(" - " + windowsApp.getVersion());
+        });
+    </script>
+    <div class="top">
+        <div class="title" id="title"><img src="img/logo.png" title="Anasayfa" /> Turcam</div>
+        <ul class="menu">
+            <li id="file-member" class="sys-menu-member">DOSYA</li>
+            <li id="edit-member" class="sys-menu-member">DÜZENLE</li>
+            <li id="tools-member" class="sys-menu-member">ARAÇLAR</li>
+            <li id="settings-member" class="sys-menu-member">AYARLAR</li>
+            <li id="help-member" class="sys-menu-member">YARDIM</li>
+        </ul>
+        <div class="control">
+            <div class="minimize"></div>
+            <div class="maximize"></div>
+            <div class="close"></div>
+        </div>
+        <div class="connection">
+            <img src="img/connected.png" /> [<span id="port">COM</span>: <span id="status">Bağlandı</span>] <input type="button" value="Çıkış" />
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div.connection input[type='button']").on("click", function (e) {
+                windowsApp.disconnect();
+            });
+
+            $("div.menu-btn").on("click", function (e) {
+                var bID = $(this).attr('id').replace('menu-', "");
+                $("div#pop-" + bID).slideToggle();
+            });
+
+            var timeout;
+
+            var min = +$("input#spindle-range").attr('min');
+            var max = +$("input#spindle-range").attr('max');
+            var step = +$("input#spindle-range").attr('step');
+
+            $("img#left-ear-r").on("mousedown", function (e) {
+                timeout = setInterval(function () {
+                    var value = +$("input#spindle-range").val();
+
+                    if (value - step >= min) {
+                        value = value - step;
+                        $("input#spindle-range").val(value).trigger("change");
+                    }
+                }, 50);
+
+                return false;
+            }).on("mouseup", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            }).on("mouseout", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            });
+
+            $("img#right-ear-r").on("mousedown", function (e) {
+                timeout = setInterval(function () {
+                    var value = +$("input#spindle-range").val();
+
+                    if (value + step <= max) {
+                        value = value + step;
+
+                        $("input#spindle-range").val(value).trigger("change");
+                    }
+                }, 50);
+
+                return false;
+            }).on("mouseup", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            }).on("mouseout", function (e) {
+                clearInterval(timeout);
+
+                return false;
+            });
+
+            var minWidth = 0;
+            var maxWidth = +$("div#rpm-bar").width();
+
+            $("input#spindle-range").on("change", function (e) {
+                var value = +$(this).val();
+
+                var percent = value / (max - min); // div current rpm value to max/min rpm gap to find percentage
+                var targetWidth = parseInt((maxWidth - minWidth) * percent);
+
+                if (targetWidth > maxWidth)
+                    targetWidth = maxWidth;
+
+                targetWidth = maxWidth - targetWidth;
+
+                $("div#rpm-ovl").css("width", targetWidth);
+            });
+
+            $("input#spindle-range").trigger('change');
+
+            function getRotationDegrees(obj) {
+                var matrix = obj.css("transform");
+
+                if (matrix !== 'none') {
+                    var values = matrix.split('(')[1].split(')')[0].split(',');
+                    var a = values[0];
+                    var b = values[1];
+                    var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+                } else { var angle = 0; }
+                return angle; //(angle < 0); // ? angle + 360 : angle;
+            }
+
+            $("div.touch, div.inner-touch").on("mouseenter", function (e) {
+                var topVal = -135;
+                var rightVal = -45;
+                var bottomVal = 45;
+                var leftVal = 135;
+
+                var value = 0;
+                var old = getRotationDegrees($("div.hover-circle"));
+
+                if ($(this).hasClass("bottom-touch"))
+                    value = bottomVal;
+                else if ($(this).hasClass("right-touch") || $(this).hasClass("inner-right-touch"))
+                    value = rightVal;
+                else if ($(this).hasClass("left-touch") || $(this).hasClass("inner-left-touch"))
+                    value = leftVal;
+                else if ($(this).hasClass("top-touch"))
+                    value = topVal;
+
+
+                if (old - value == 270)
+                    value = old + 90;
+                else if (old - value == -270)
+                    value = old - 90;
+
+                if ($(this).hasClass("inner-right-touch") || $(this).hasClass("inner-left-touch"))
+                    $("div.hover-circle").addClass("hc-inner");
+                else
+                    $("div.hover-circle").removeClass("hc-inner");
+
+                $("div.hover-circle").animateRotate(old, value, 200, "linear", function () { });
+            });
+
+            getPage("start");
+
+            setTimeout(function () {
+                $("div.menu-btn").trigger("click");
+                $("div.tab-content").attr("tabindex", "-1").focus();
+            }, 1000);
+        });
+
+    </script>
+    <div class="left-bar">
+        <div id="menu-1" class="menu-btn">SPINDLE SETTINGS <img src="img/spindle.png" /></div>
+        <div id="pop-1" class="menu-pop">
+            <div class="header">SPINDLE SPEED</div>
+            <div class="bar-h">
+                RPM: <div id="rpm-bar" class="bar"></div><div id="rpm-ovl" class="bar-overlay"><img src="img/bar-tile.png" /><div class="remaining"></div></div>
+            </div>
+            <div class="bar-h">
+                FEED: <div class="bar"></div><div class="bar-overlay"></div>
+            </div>
+            <div class="bar-h">
+                SPEED: <div class="bar"></div><div class="bar-overlay"></div>
+            </div>
+            <div class="range-h"><img id="left-ear-r" src="img/left-ear-range.png" /><input id="spindle-range" min="100" max="12000" value="100" step="100" type="range" /><img id="right-ear-r" src="img/right-ear-range.png" /></div>
+        </div>
+        <div id="menu-2" class="menu-btn">MOTOR SETTINGS <img src="img/motor.png" /></div>
+        <div id="pop-2" class="menu-pop">
+            <div class="header">MOTOR COORDINATES</div>
+            <div class="row"><img src="img/motor-small.png" /><span>X:</span><div id="x-position" class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>Y:</span><div id="y-position" class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>Z:</span><div id="z-position" class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>A:</span><div id="a-position" class="coordinate">0.0000</div></div>
+            <div class="row"><img src="img/motor-small.png" /><span>B:</span><div id="b-position" class="coordinate">0.0000</div></div>
+            <div class="row"><div class="ref-all-btn">REF ALL HOME</div></div>
+        </div>
+    </div>
+    <div class="main-bar">
+        <div class="tabs">
+        </div>
+        <div id="content" class="content">
+        </div>
+    </div>
+    <div class="right-bar">
+        <div id="menu-3" class="menu-btn">TOUCH UI <img src="img/touch.png" /></div>
+        <div id="pop-3" class="menu-pop">
+            <div class="header">TOUCH CONTROL</div>
+            <div class="joystick-h">
+                <div class="rect-holder">
+                    <div id="up-bore-btn" class="rect-btn upper-left"></div>
+                    <div id="up-plasma-btn" class="rect-btn upper-right"></div>
+                    <div id="down-bore-btn" class="rect-btn down-left"></div>
+                    <div id="down-plasma-btn" class="rect-btn down-right"></div>
+
+                    <div class="hor-seperator"></div>
+                    <div class="ver-seperator"></div>
+                </div>
+                <div class="fake-circle"></div>
+                <div class="touch-h">
+                    <div id="forward-btn" class="touch top-touch"><div class="arrow"></div></div>
+                    <div id="right-bore-btn" class="touch right-touch"><div class="arrow"></div></div>
+                    <div id="backward-btn" class="touch bottom-touch"><div class="arrow"></div></div>
+                    <div id="left-bore-btn" class="touch left-touch"><div class="arrow"></div></div>
+                    <div class="hover-circle"></div>
+                    <div class="base-circle">
+                        <div id="right-plasma-btn" class="inner-touch inner-left-touch">
+                        </div>
+                        <div id="left-plasma-btn" class="inner-touch inner-right-touch">
+                        </div>
+                        <div class="inner-base-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('div.minimize').click(function (e) {
+                windowsApp.minimizeWindowState();
+            });
+
+            $('div.maximize').click(function (e) {
+                var result = windowsApp.toggleWindowState();
+                if (result == true)
+                    $(this).addClass("restore");
+                else
+                    $(this).removeClass("restore");
+            });
+
+            $('div.close').click(function (e) {
+                windowsApp.exit();
+            });
+
+            $(".sys-menu-member").on("click", function (e) {
+                if (!$(this).hasClass("sys-mm-active"))
+                    $("li.sys-menu-member").removeClass("sys-mm-active");
+
+                var id = $(this).attr("id").replace("-member", "");
+
+                var x = +$(this).offset().left;
+                var y = +$(this).offset().top + parseInt($(this).css("height")) - 1;
+
+                var selector = "ul#" + id + "-pop";
+
+                $("ul.sys-menu-pop").each(function () {
+                    if ($(this).attr("id") != selector.replace("ul#", ""))
+                        $(this).hide();
+                });
+
+                $(this).toggleClass("sys-mm-active");
+                $(selector).css("left", x).css("top", y).toggle();
+            });
+
+            $(window).on("click", function (e) {
+                if (!e.target.matches(".sys-menu-member")) {
+                    $("ul.sys-menu-pop").hide();
+                    $("li.sys-menu-member").removeClass("sys-mm-active");
+                }
+            });
+        });
+
+    </script>
+
+    <ul class="sys-menu-pop" id="file-pop">
+        <li><img src="img/close.png" /> Add</li>
+        <li><img src="img/open.png" /> Open</li>
+        <li><img src="img/save-icon.png" /> Save</li>
+        <li><img src="img/save-as.png" />Save As</li>
+        <li>Export Project</li>
+        <li>Import Project</li>
+        <li>Browse with..</li>
+        <li id="exit-item"><img src="img/close.png" /> Exit</li>
+    </ul>
+    <ul class="sys-menu-pop" id="edit-pop">
+        <li><img src="img/close.png" /> Add</li>
+        <li>Open</li>
+        <li>Advanced</li>
+        <li>Bookmarks</li>
+        <li>System</li>
+        <li><img src="img/close.png" /> Exit</li>
+    </ul>
+    <ul class="sys-menu-pop" id="tools-pop">
+        <li><img src="img/close.png" /> Add</li>
+        <li>Open</li>
+        <li><img src="img/close.png" /> Exit</li>
+        <li id="drillbits-item">Matkap Uçları</li>
+    </ul>
+    <ul class="sys-menu-pop" id="settings-pop">
+        <li><img src="img/close.png" /> Add</li>
+        <li>Open</li>
+        <li id="connections-item">Bağlantı</li>
+    </ul>
+    <ul class="sys-menu-pop" id="help-pop">
+        <li><img src="img/close.png" /> About Us </li>
+        <li>Contact</li>
+        <li><img src="img/close.png" /> Info</li>
+        <li><img src="img/close.png" /> Technical Support</li>
+        <li><img src="img/close.png" /> About Turcam Studio</li>
+    </ul>
+    <div class="footer">
+        <div class="footer-line"></div>
+        <div class="status-bar">Ready
+            <img src="img/settings.png" class="settings-wrench" id="settings-wrench" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("img#settings-wrench").click(function (e) {
+                windowsApp.showDevTools();
+            });
+        });
+
+        $("body").on($.modal.OPEN, function (event, m) {
+            $("div.modal").draggable({ handle: 'div.header' });
+        });
+        $("body").on($.modal.CLOSE, function (event, m) {
+            m.elm.remove();
+        });
+    </script>
+</body>
+</html>

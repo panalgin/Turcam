@@ -1,0 +1,51 @@
+﻿<div id="connections-content" class="tab-content" tabindex="-1">
+    <div class="header">Com Port Bağlantısı <img src="img/comport-icon.png" /></div>
+    <select id="port-select" class="port">
+    </select>
+    <select id="baud-select" class="baud">
+        <option value="300">300</option>
+        <option value="300">1200</option>
+        <option value="2400">2400</option>
+        <option value="4800">4800</option>
+        <option value="9600">9600</option>
+        <option value="14400">14400</option>
+        <option value="19200">19200</option>
+        <option value="28800">28800</option>
+        <option value="38400">38400</option>
+        <option value="57600">57600</option>
+        <option value="115200">115200</option>
+        <option selected="selected" value="250000">250000</option>
+    </select>
+    <input id="connect-button" class="connect" type="button" value="Bağlan" />
+    <span>Veri akışı:</span>
+    <textarea id="signal-area"></textarea>
+
+    <script type="text/javascript">
+        var ports = windowsApp.getPortNames();
+
+        $("select#port-select").html("");
+
+        $.each(ports, function (key, value) {
+            $("select#port-select").append("<option value=\"" + value + "\">" + value + "</option>");
+        });
+        
+        $("input#connect-button").on("click", function (e) {
+            if ($(this).hasClass("connect")) {
+                var port = $("select#port-select").val();
+                var baud = +$("select#baud-select").val();
+
+                if (port != null && baud > 0) {
+                    windowsApp.connect(port, baud);
+                }
+                else {
+                    alert("Hatalı port yada bağlantı hızı.");
+                }
+            }
+            else if ($(this).hasClass("disconnect")) {
+                windowsApp.disconnect();
+            }
+
+            e.preventDefault();
+       });
+    </script>
+</div> 
