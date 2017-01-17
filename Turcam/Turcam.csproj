@@ -116,6 +116,7 @@
     <Compile Include="JavascriptInjector.cs" />
     <Compile Include="JavascriptInteractionController.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
     <Compile Include="Logic\ResizeDirections.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

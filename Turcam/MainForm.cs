@@ -39,7 +39,8 @@ namespace Turcam
 
             var browser = new ChromiumWebBrowser(page)
             {
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                MenuHandler = new CefSharpContextMenuHandler()
             };
 
             browser.BrowserSettings = new BrowserSettings()

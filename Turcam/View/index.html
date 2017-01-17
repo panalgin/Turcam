@@ -262,8 +262,8 @@
 
                 var id = $(this).attr("id").replace("-member", "");
 
-                var x = +$(this).offset().left;
-                var y = +$(this).offset().top + parseInt($(this).css("height")) - 1;
+                var x = +$(this).offset().left - 1;
+                var y = +$(this).offset().top + parseInt($(this).css("height")) - 2;
 
                 var selector = "ul#" + id + "-pop";
 
