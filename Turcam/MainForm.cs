@@ -91,7 +91,7 @@ namespace Turcam
             this.Thumbs.All(delegate (KeyValuePair<uint, Panel> kvp)
             {
                 kvp.Value.BringToFront();
-                kvp.Value.Visible = false;
+                //kvp.Value.Visible = false;
 
                 return true;
             });
