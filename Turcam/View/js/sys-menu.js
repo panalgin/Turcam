@@ -10,4 +10,8 @@
     $("li#exit-item").on("click", function (e) {
         windowsApp.exit();
     });
+
+    $("li#cam-item").on("click", function (e) {
+        getPage("cam");
+    });
 });
