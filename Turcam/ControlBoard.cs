@@ -4,6 +4,9 @@ using Turcam.Commands;
 
 namespace Turcam
 {
+    /// <summary>
+    /// Base control board
+    /// </summary>
     public class ControlBoard : IControlBoard, IDisposable
     {
         private bool isConnected = false;
